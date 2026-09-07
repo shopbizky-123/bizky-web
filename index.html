@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIZKY | Food & Printing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #e67e22; --dark-footer: #111111; --text-gray: #aaaaaa; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background-color: #f9f9f9; color: #333; }
+
+        nav { background: white; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { text-decoration: none; color: #333; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        nav ul li a:hover { color: var(--primary); }
+
+        /* GAMBAR POSTER DI SINI */
+        .hero-image { width: 100%; max-height: 500px; object-fit: contain; background: #fcebd2; display: block; }
+
+        section { padding: 60px 8%; }
+        h2.title { text-align: center; margin-bottom: 40px; font-size: 2rem; position: relative; padding-bottom: 10px; }
+        h2.title::after { content: ''; width: 50px; height: 3px; background: var(--primary); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .card { background: white; padding: 15px; border-radius: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card img { width: 100%; height: 230px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; }
+        .price { color: var(--primary); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; }
+
+        .btn-buy { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; text-decoration: none; font-weight: 600; display: inline-block; width: 100%; transition: 0.3s; }
+        .btn-buy:hover { background: #d35400; }
+
+        footer { background: var(--dark-footer); color: white; padding: 60px 8% 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-col p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.8; margin-bottom: 20px; }
+        .social-icons { display: flex; gap: 10px; }
+        .social-icons a { width: 40px; height: 40px; background: #333; color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; }
+        .contact-list li { display: flex; align-items: flex-start; gap: 10px; color: var(--text-gray); font-size: 0.9rem; margin-bottom: 15px; list-style: none; }
+        .contact-list i { color: var(--primary); margin-top: 5px; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; text-align: center; color: #555; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">BIZKY SHOP</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <!-- TUKAR GAMBAR PIZZA KEPADA POSTER KAU -->
+    <div id="home">
+        <img src="poster.jfif" class="hero-image" alt="Bizky Poster">
+    </div>
+
+    <section id="products">
+        <h2 class="title">Produk Kami</h2>
+        <div class="grid">
+            <div class="card">
+                <!-- TUKAR GAMBAR CHOCOJAR KEPADA GAMBAR BARU KAU -->
+                <img src="chocojar-baru.jfif" alt="Chocojar Bizky">
+                <h3>Chocojar Premium</h3>
+                <div class="price">RM 10.00</div>
+                <a href="https://wa.me/60197945644?text=Nak%20Chocojar" class="btn-buy">WhatsApp Order</a>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=300&q=80" alt="Ramen">
+                <h3>Ramen Samyang</h3>
+                <div class="price">RM 12.00</div>
+                <a href="https://wa.me/60197945644?text=Nak%20Ramen" class="btn-buy">WhatsApp Order</a>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=300&q=80" alt="Chicken Chop">
+                <h3>Chicken Chop Crispy</h3>
+                <div class="price">RM 18.00</div>
+                <a href="https://wa.me/60197945644?text=Nak%20Chicken%20Chop" class="btn-buy">WhatsApp Order</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background: white;">
+        <h2 class="title">Servis Kami</h2>
+        <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; text-align: center;">
+            <div style="max-width: 250px;">
+                <i class="fas fa-print" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Printing Assignment</h3>
+                <p>B&W / Color - Harga Student!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="feedback" style="background: #f1f1f1; text-align: center;">
+        <h2>Customer Feedback</h2>
+        <div style="max-width: 500px; margin: auto; background: white; padding: 25px; border-radius: 15px;">
+            <input type="text" id="fbNama" placeholder="Nama Anda" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
+            <textarea id="fbMesej" rows="4" placeholder="Komen anda..." style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
+            <button id="fbBtn" style="background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%;">Hantar Feedback</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold; font-size: 1.2rem;">B</div>
+                    <h3 style="margin:0">byHAQ</h3>
+                </div>
+                <p>Popia frozen rangup, chocojar sedap, ramen terangkat, dan servis printing assignment dengan harga berpatutan.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/14oFTY2jjny/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/bizky_shop?utm_source=qr&stkn=eXAxZ3kxeG11YzZ2" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/60197945644" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Hubungi Kami</h3>
+                <ul class="contact-list">
+                    <li><i class="fas fa-map-marker-alt"></i> Besut, Terengganu</li>
+                    <li><i class="fas fa-phone"></i> 019-794 5644</li>
+                    <li><i class="fas fa-envelope"></i> byhaq66@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2024 BIZKY ENTERPRISE | Powered by Firebase</div>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
