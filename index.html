@@ -71,16 +71,31 @@
                 <div class="price">RM 10.00</div>
                 <a href="https://wa.me/601133512092?text=hi,nak%20beli%20chocojar" class="btn-buy">WhatsApp Order</a>
             </div>
+<!-- KAD RAMEN SLIDER PENUH -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=300&q=80" alt="Ramen">
-                <h3>Ramen Samyang</h3>
-                <div class="price">RM 12.00</div>
-                <a href="https://wa.me/60197945644?text=Nak%20Ramen" class="btn-buy">WhatsApp Order</a>
+                <div style="position: relative; width: 100%; height: 230px; border-radius: 12px; overflow: hidden; margin-bottom: 15px; border: 1.5px solid #e0e0e0; background: #ffffff; display: flex; align-items: center; justify-content: center;">
+                    
+                    <!-- Butang Kiri (<) -->
+                    <button onclick="prevRamen()" style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.55); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; z-index: 10; font-weight: bold; display: flex; align-items: center; justify-content: center;">❮</button>
+                    
+                    <!-- Gambar Perisa Ramen -->
+                    <img id="ramenImg" src="ramen samyang.jpg" alt="Ramen Samyang" style="width: 100%; height: 100%; object-fit: contain; transform: scale(1.16); transition: 0.2s;">
+                    
+                    <!-- Butang Kanan (>) -->
+                    <button onclick="nextRamen()" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.55); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; z-index: 10; font-weight: bold; display: flex; align-items: center; justify-content: center;">❯</button>
+                </div>
+
+                <!-- Nama Perisa Automatik -->
+                <h3 id="ramenTitle">Ramen Samyang</h3>
+                <div class="price">RM 6.00</div>
+                
+                <!-- Butang WhatsApp Order -->
+                <a id="ramenBtn" href="https://wa.me/60197945644?text=Hi,%20saya%20nak%20order%20Ramen%20Samyang" class="btn-buy" target="_blank">WhatsApp Order</a>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=300&q=80" alt="Chicken Chop">
+                <img src="chicken-chop.jpg" alt="Chicken Chop">
                 <h3>Chicken Chop Crispy</h3>
-                <div class="price">RM 18.00</div>
+                <div class="price">RM 6.00</div>
                 <a href="https://wa.me/60197945644?text=Nak%20Chicken%20Chop" class="btn-buy">WhatsApp Order</a>
             </div>
         </div>
@@ -113,7 +128,7 @@
                     <div style="background: var(--primary); color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold; font-size: 1.2rem;">B</div>
                     <h3 style="margin:0">byHAQ</h3>
                 </div>
-                <p>Popia frozen rangup, chocojar sedap, ramen terangkat, dan servis printing assignment dengan harga berpatutan.</p>
+                <p>Chicken chop rangup, chocojar sedap, ramen terangkat, dan servis printing assignment dengan harga berpatutan.</p>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/share/14oFTY2jjny/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/bizky_shop?utm_source=qr&stkn=eXAxZ3kxeG11YzZ2" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -134,5 +149,83 @@
     </footer>
 
     <script type="module" src="app.js"></script>
+  <script>
+    // Senarai Lengkap: Cover Semua Perisa + 9 Pilihan Perisa Samyang
+    const ramenList = [
+        {
+            name: "Ramen Samyang",
+            img: "ramen samyang.jpg",
+            scale: "1.16"
+        },
+        {
+            name: "Original Hot",
+            img: "https://cdn.buldak.com/images/1784783544088-my-pouch-noodles-product-buldak-ramen-original_20260723141222.png?w=512&q=80&fit=contain",
+            scale: "1.0"
+        },
+        {
+            name: "2X Spicy",
+            img: "2x Spicy.jpg",
+            scale: "1.0"
+        },
+        {
+            name: "Stew Type",
+            img: "Stew.jpg",
+            scale: "1.0"
+        },
+        {
+            name: "Cheese",
+            img: "Cheese.jpg",
+            scale: "1.0"
+        },
+        {
+            name: "Carbonara",
+            img: "https://cdn.buldak.com/images/1779976381501-my-pouch-noodles-product-buldak-ramen-carbonara_20260528215259.webp",
+            scale: "1.0"
+        },
+        {
+            name: "Jjajang",
+            img: "jjajang.jpg",
+            scale: "1.0"
+        },
+        {
+            name: "Cream Carbonara",
+            img: "Cream Carbonara.jpg",
+            scale: "1.0"
+        },
+        {
+            name: "Quattro Cheese",
+            img: "Quattro Cheese.jpg",
+            scale: "1.0"
+        },
+        {
+            name: "Rosé",
+            img: "https://cdn.buldak.com/images_dev/1758256486240-22_Buldak%20Ramen%20Rose_140g.webp?w=512&q=80&fit=contain",
+            scale: "1.0"
+        }
+    ];
+
+    let currentIndex = 0;
+
+    function updateRamen() {
+        const item = ramenList[currentIndex];
+        const imgEl = document.getElementById('ramenImg');
+        
+        imgEl.src = item.img;
+        imgEl.style.transform = `scale(${item.scale})`;
+        
+        document.getElementById('ramenTitle').innerText = item.name;
+        document.getElementById('ramenBtn').href = "https://wa.me/60197945644?text=" + encodeURIComponent("Hi, saya nak order " + item.name);
+    }
+
+    function nextRamen() {
+        currentIndex = (currentIndex + 1) % ramenList.length;
+        updateRamen();
+    }
+
+    function prevRamen() {
+        currentIndex = (currentIndex - 1 + ramenList.length) % ramenList.length;
+        updateRamen();
+    }
+</script>
 </body>
 </html>
