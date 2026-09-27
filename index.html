@@ -3,229 +3,893 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIZKY | Food & Printing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="BIZKY Shop - Ramen, chicken chop, chocojar & servis printing assignment di TVET Mara Besut.">
+    <title>BIZKY | Food &amp; Printing</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        :root { --primary: #e67e22; --dark-footer: #111111; --text-gray: #aaaaaa; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background-color: #f9f9f9; color: #333; }
+        /* ============ TOKENS ============ */
+        :root{
+            --primary: #e67e22;
+            --primary-600: #cf6d16;
+            --primary-400: #ff9d42;
+            --ink: #16110c;
+            --ink-soft: #4a423a;
+            --muted: #7b7168;
+            --bg: #faf7f2;
+            --card: rgba(255,255,255,.62);
+            --stroke: rgba(255,255,255,.75);
+            --line: rgba(22,17,12,.08);
+            --shadow-soft: 0 24px 60px -28px rgba(70,44,18,.38);
+            --radius-xl: 28px;
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --ease: cubic-bezier(.22,.8,.24,1);
+            --maxw: 1180px;
+        }
 
-        nav { background: white; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        nav .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 25px; }
-        nav ul li a { text-decoration: none; color: #333; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        nav ul li a:hover { color: var(--primary); }
+        *{ margin:0; padding:0; box-sizing:border-box; }
+        html{ scroll-behavior:smooth; scroll-padding-top:120px; -webkit-text-size-adjust:100%; }
+        body{
+            font-family:'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background:var(--bg);
+            color:var(--ink);
+            line-height:1.65;
+            overflow-x:hidden;
+            -webkit-font-smoothing:antialiased;
+        }
+        img{ display:block; max-width:100%; }
+        a{ color:inherit; }
+        ::selection{ background:rgba(230,126,34,.25); }
 
-        /* GAMBAR POSTER DI SINI */
-        .hero-image { width: 100%; max-height: 500px; object-fit: contain; background: #fcebd2; display: block; }
+        /* ============ LIQUID BACKGROUND ============ */
+        .liquid{ position:fixed; inset:0; z-index:-2; overflow:hidden; pointer-events:none; }
+        .blob{
+            position:absolute; border-radius:50%;
+            filter:blur(90px); opacity:.55;
+            animation:drift 22s var(--ease) infinite alternate;
+        }
+        .blob-1{ width:52vw; height:52vw; top:-14vw; left:-10vw; background:radial-gradient(circle at 30% 30%, #ffb066, transparent 70%); }
+        .blob-2{ width:46vw; height:46vw; top:22vh; right:-12vw; background:radial-gradient(circle at 60% 40%, #ff8f5e, transparent 70%); animation-duration:26s; animation-delay:-6s; }
+        .blob-3{ width:40vw; height:40vw; bottom:-10vw; left:22vw; background:radial-gradient(circle at 50% 50%, #ffd9a8, transparent 70%); animation-duration:30s; animation-delay:-12s; }
+        @keyframes drift{
+            0%   { transform:translate3d(0,0,0) scale(1); }
+            50%  { transform:translate3d(4vw,-4vh,0) scale(1.12); }
+            100% { transform:translate3d(-3vw,5vh,0) scale(.95); }
+        }
+        .grain{
+            position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.35;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+        }
 
-        section { padding: 60px 8%; }
-        h2.title { text-align: center; margin-bottom: 40px; font-size: 2rem; position: relative; padding-bottom: 10px; }
-        h2.title::after { content: ''; width: 50px; height: 3px; background: var(--primary); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        /* ============ SHARED ============ */
+        .container{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+        section{ padding:96px 0; position:relative; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-        .card { background: white; padding: 15px; border-radius: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
-        .card img { width: 100%; height: 230px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; }
-        .price { color: var(--primary); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; }
+        .glass{
+            background:linear-gradient(135deg, rgba(255,255,255,.70), rgba(255,255,255,.40));
+            -webkit-backdrop-filter:blur(24px) saturate(170%);
+            backdrop-filter:blur(24px) saturate(170%);
+            border:1px solid var(--stroke);
+            box-shadow:var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.9);
+        }
 
-        .btn-buy { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; text-decoration: none; font-weight: 600; display: inline-block; width: 100%; transition: 0.3s; }
-        .btn-buy:hover { background: #d35400; }
+        .eyebrow{
+            display:inline-flex; align-items:center; gap:8px;
+            font-size:.74rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+            color:var(--primary-600);
+            background:rgba(230,126,34,.12);
+            border:1px solid rgba(230,126,34,.22);
+            padding:7px 14px; border-radius:999px;
+        }
+        .eyebrow::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--primary); box-shadow:0 0 0 4px rgba(230,126,34,.18); }
 
-        footer { background: var(--dark-footer); color: white; padding: 60px 8% 20px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-col h3 { margin-bottom: 20px; font-size: 1.2rem; }
-        .footer-col p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.8; margin-bottom: 20px; }
-        .social-icons { display: flex; gap: 10px; }
-        .social-icons a { width: 40px; height: 40px; background: #333; color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; }
-        .contact-list li { display: flex; align-items: flex-start; gap: 10px; color: var(--text-gray); font-size: 0.9rem; margin-bottom: 15px; list-style: none; }
-        .contact-list i { color: var(--primary); margin-top: 5px; }
-        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; text-align: center; color: #555; font-size: 0.8rem; }
+        .section-head{ text-align:center; max-width:640px; margin:0 auto 54px; }
+        .section-head h2{
+            font-size:clamp(2rem, 4vw, 2.9rem); font-weight:800; letter-spacing:-.03em;
+            line-height:1.15; margin:18px 0 12px;
+        }
+        .section-head p{ color:var(--muted); font-size:1.02rem; }
+        .grad{
+            background:linear-gradient(100deg, var(--primary) 10%, var(--primary-400) 55%, #ffc78f 95%);
+            -webkit-background-clip:text; background-clip:text; color:transparent;
+        }
+
+        .btn{
+            position:relative; overflow:hidden; display:inline-flex; align-items:center; justify-content:center; gap:9px;
+            padding:14px 28px; border-radius:999px; border:1px solid transparent;
+            font-family:inherit; font-size:.95rem; font-weight:700; letter-spacing:.01em; text-decoration:none; cursor:pointer;
+            transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s, color .3s;
+        }
+        .btn::after{
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(115deg, transparent 32%, rgba(255,255,255,.55) 50%, transparent 68%);
+            transform:translateX(-130%); transition:transform .75s var(--ease);
+        }
+        .btn:hover::after{ transform:translateX(130%); }
+        .btn-primary{
+            background:linear-gradient(135deg, var(--primary), var(--primary-600));
+            color:#fff; box-shadow:0 14px 30px -12px rgba(230,126,34,.75);
+        }
+        .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 20px 38px -12px rgba(230,126,34,.85); }
+        .btn-ghost{
+            background:rgba(255,255,255,.55); color:var(--ink);
+            border-color:rgba(22,17,12,.10);
+            -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+        }
+        .btn-ghost:hover{ transform:translateY(-3px); background:rgba(255,255,255,.85); }
+        .btn-block{ width:100%; }
+
+        /* scroll progress */
+        .progress{
+            position:fixed; top:0; left:0; height:3px; width:0; z-index:2000;
+            background:linear-gradient(90deg, var(--primary), #ffbe7d);
+            box-shadow:0 0 12px rgba(230,126,34,.7);
+            transition:width .1s linear;
+        }
+
+        /* ============ NAV ============ */
+        .nav-wrap{ position:fixed; top:0; left:0; right:0; z-index:1000; padding:18px 0; transition:padding .4s var(--ease); }
+        .nav-wrap.scrolled{ padding:10px 0; }
+        .nav{
+            display:flex; align-items:center; justify-content:space-between; gap:20px;
+            padding:12px 14px 12px 22px; border-radius:999px;
+            background:rgba(255,255,255,.42);
+            -webkit-backdrop-filter:blur(22px) saturate(180%);
+            backdrop-filter:blur(22px) saturate(180%);
+            border:1px solid rgba(255,255,255,.7);
+            box-shadow:0 10px 34px -22px rgba(60,40,20,.5);
+            transition:background .4s, box-shadow .4s;
+        }
+        .nav-wrap.scrolled .nav{ background:rgba(255,255,255,.72); box-shadow:0 16px 44px -26px rgba(60,40,20,.6); }
+
+        .logo{ display:flex; align-items:center; gap:11px; text-decoration:none; font-weight:800; letter-spacing:-.02em; }
+        .logo-text{ font-size:1.12rem; line-height:1; }
+        .logo-text em{ font-style:normal; color:var(--primary); }
+        .logo-text span{ display:block; font-size:.62rem; font-weight:600; letter-spacing:.28em; color:var(--muted); text-transform:uppercase; margin-top:4px; }
+        .logo-img{
+            width:44px; height:44px; border-radius:13px; object-fit:cover;
+            background:#fdfaf4; border:1px solid rgba(22,17,12,.10);
+            box-shadow:0 8px 20px -10px rgba(70,44,18,.55);
+            transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+        }
+        .logo:hover .logo-img{ transform:rotate(-4deg) scale(1.06); box-shadow:0 14px 26px -10px rgba(230,126,34,.6); }
+
+        .nav-links{ display:flex; align-items:center; list-style:none; gap:6px; }
+        .nav-links a{
+            position:relative; display:block; padding:9px 16px; border-radius:999px;
+            text-decoration:none; color:var(--ink-soft); font-size:.9rem; font-weight:600;
+            transition:color .3s, background .3s;
+        }
+        .nav-links a::after{
+            content:''; position:absolute; left:16px; right:16px; bottom:5px; height:2px; border-radius:2px;
+            background:linear-gradient(90deg, var(--primary), var(--primary-400));
+            transform:scaleX(0); transform-origin:left; transition:transform .4s var(--ease);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after{ transform:scaleX(1); }
+        .nav-links a:hover, .nav-links a.active{ color:var(--ink); }
+        .nav-links a.active{ background:rgba(230,126,34,.10); }
+
+        .nav-toggle{ display:none; width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+            background:rgba(255,255,255,.7); cursor:pointer; align-items:center; justify-content:center; font-size:1rem; color:var(--ink);
+            font-family:inherit; transition:background .3s, transform .3s var(--ease); }
+        .nav-toggle:hover{ background:#fff; transform:scale(1.06); }
+
+        /* ============ HERO ============ */
+        .hero{ padding:170px 0 80px; }
+        .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; }
+        .hero h1{
+            font-size:clamp(2.5rem, 5.2vw, 4.05rem); font-weight:800; letter-spacing:-.045em; line-height:1.06;
+            margin:22px 0 20px;
+        }
+        .hero p.lead{ font-size:1.08rem; color:var(--ink-soft); max-width:520px; }
+        .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-top:34px; }
+        .hero-stats{ display:flex; flex-wrap:wrap; gap:34px; list-style:none; margin-top:46px; padding-top:26px; border-top:1px solid var(--line); }
+        .hero-stats b{ display:block; font-size:1.55rem; font-weight:800; letter-spacing:-.03em; color:var(--ink); }
+        .hero-stats span{ font-size:.82rem; color:var(--muted); font-weight:500; }
+
+        .hero-visual{ position:relative; }
+        .hero-float{ animation:floaty 7s ease-in-out infinite; }
+        .hero-card{
+            border-radius:var(--radius-xl); padding:16px; overflow:hidden;
+            transform:rotate(-1.2deg); transition:transform .6s var(--ease), box-shadow .6s var(--ease);
+        }
+        .hero-card:hover{ transform:rotate(0deg) translateY(-6px) scale(1.01); box-shadow:0 50px 90px -44px rgba(70,44,18,.6); }
+        .hero-card img{ width:100%; height:clamp(300px, 42vw, 460px); object-fit:contain; border-radius:20px; background:#fcebd2; transition:transform .7s var(--ease); }
+        .hero-card:hover img{ transform:scale(1.03); }
+        @keyframes floaty{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-14px); } }
+
+        .float-chip{
+            position:absolute; display:flex; align-items:center; gap:9px; white-space:nowrap;
+            padding:11px 16px; border-radius:999px; font-size:.83rem; font-weight:700;
+            background:rgba(255,255,255,.78); border:1px solid rgba(255,255,255,.9);
+            -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+            box-shadow:0 18px 40px -20px rgba(60,40,20,.6);
+            animation:floaty2 6s ease-in-out infinite;
+            transition:transform .35s var(--ease), background .3s;
+        }
+        .float-chip:hover{ background:rgba(255,255,255,.95); animation-play-state:paused; }
+        .float-chip i{ color:var(--primary); }
+        .chip-1{ left:-16px;  top:64px; }
+        .chip-2{ right:-16px; top:26px; animation-delay:-1.5s; }
+        .chip-3{ left:-16px;  bottom:104px; animation-delay:-3s; }
+        .chip-4{ right:-16px; bottom:56px; animation-delay:-4.5s; }
+        @keyframes floaty2{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
+
+        /* ============ PRODUCTS ============ */
+        .grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(265px, 1fr)); gap:28px; }
+        .card{
+            border-radius:var(--radius-lg); padding:15px; text-align:center;
+            display:flex; flex-direction:column;
+            transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+        }
+        .card:hover{ transform:translateY(-12px); box-shadow:0 42px 70px -34px rgba(70,44,18,.55); }
+        .card-media{
+            position:relative; overflow:hidden; border-radius:var(--radius-md);
+            background:#fff; border:1px solid rgba(22,17,12,.07);
+            height:236px; display:flex; align-items:center; justify-content:center;
+            transition:transform .5s var(--ease);
+        }
+        .card-media img{ width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease), opacity .18s ease; }
+        .card-slider .card-media img{ object-fit:contain; background:#fff; }
+        .card:not(.card-slider):hover .card-media img{ transform:scale(1.08); }
+        .card-slider:hover .card-media{ transform:scale(1.025); }
+        .card-media::after{
+            content:''; position:absolute; inset:0; pointer-events:none;
+            background:linear-gradient(180deg, transparent 55%, rgba(22,17,12,.16));
+            opacity:0; transition:opacity .5s;
+        }
+        .card:hover .card-media::after{ opacity:1; }
+
+        .card h3{ font-size:1.13rem; font-weight:700; letter-spacing:-.02em; margin:18px 0 6px; }
+        .card .desc{ font-size:.86rem; color:var(--muted); margin-bottom:12px; }
+        .price{
+            display:inline-flex; align-items:center; gap:7px; align-self:center;
+            color:var(--primary-600); font-weight:800; font-size:1.12rem; letter-spacing:-.02em;
+            background:rgba(230,126,34,.12); border:1px solid rgba(230,126,34,.22);
+            padding:6px 16px; border-radius:999px; margin-bottom:16px;
+        }
+        .card .btn{ margin-top:auto; }
+
+        /* slider controls */
+        .slider-btn{
+            position:absolute; top:50%; transform:translateY(-50%);
+            width:36px; height:36px; border-radius:50%; z-index:10; cursor:pointer;
+            background:rgba(255,255,255,.72); color:var(--ink); border:1px solid rgba(255,255,255,.9);
+            -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+            display:flex; align-items:center; justify-content:center;
+            font-family:inherit; font-size:.8rem; font-weight:700;
+            box-shadow:0 8px 20px -10px rgba(0,0,0,.5);
+            transition:transform .3s var(--ease), background .3s;
+        }
+        .slider-btn:hover{ background:var(--primary); color:#fff; transform:translateY(-50%) scale(1.12); }
+        .slider-btn.prev{ left:10px; }
+        .slider-btn.next{ right:10px; }
+        .slider-dots{ display:flex; justify-content:center; gap:6px; margin-top:12px; }
+        .slider-dots i{ width:6px; height:6px; border-radius:50%; background:rgba(22,17,12,.18); transition:.3s; }
+        .slider-dots i.on{ background:var(--primary); width:18px; border-radius:999px; }
+
+        /* ============ SERVICES ============ */
+        .service-card{
+            border-radius:var(--radius-xl); padding:42px 40px;
+            display:grid;
+            grid-template-columns:auto minmax(0,1fr) auto;
+            grid-template-areas:"icon body media";
+            gap:38px; align-items:stretch;
+            transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+        }
+        .service-card:hover{ transform:translateY(-8px); box-shadow:0 44px 74px -36px rgba(70,44,18,.55); }
+        .service-icon{
+            grid-area:icon; align-self:center;
+            width:96px; height:96px; border-radius:28px; display:grid; place-items:center;
+            background:linear-gradient(140deg, rgba(255,255,255,.9), rgba(255,255,255,.5));
+            border:1px solid rgba(255,255,255,.9);
+            color:var(--primary); font-size:2.4rem;
+            box-shadow:0 18px 40px -20px rgba(230,126,34,.85);
+            transition:transform .5s var(--ease);
+        }
+        .service-card:hover .service-icon{ transform:rotate(-6deg) scale(1.06); }
+
+        .service-body{ grid-area:body; display:flex; flex-direction:column; min-width:0; }
+        .service-body h3{ font-size:clamp(1.5rem,2.6vw,2rem); font-weight:800; letter-spacing:-.03em; margin-bottom:10px; }
+        .service-body p{ color:var(--ink-soft); max-width:560px; }
+        .chips{ display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 24px; list-style:none; }
+        .chips li{
+            font-size:.82rem; font-weight:700; padding:8px 15px; border-radius:999px;
+            background:rgba(255,255,255,.6); border:1px solid rgba(22,17,12,.08); color:var(--ink-soft);
+            transition:.3s;
+        }
+        .chips li:hover{ background:#fff; color:var(--primary-600); border-color:rgba(230,126,34,.3); transform:translateY(-3px); }
+        .service-body .btn{ align-self:flex-start; margin-top:auto; }
+
+        /* --- printing image (right side of card) --- */
+        .service-media{
+            grid-area:media; margin:0;
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            align-self:center; padding-right:32px;
+        }
+        .service-img{
+            display:block; flex-shrink:0; max-width:100%;
+            background:#fff; border:1px solid rgba(255,255,255,.85);
+            transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+        }
+        .service-card:hover .service-img{ transform:translateY(-4px) scale(1.02); box-shadow:0 16px 32px -14px rgba(70,44,18,.5); }
+
+        /* Tailwind-compatible utilities used on the service image */
+        .h-48{ height:12rem; }
+        .w-48{ width:12rem; }
+        .object-cover{ object-fit:cover; }
+        .rounded-2xl{ border-radius:1rem; }
+        .shadow-md{ box-shadow:0 4px 6px -1px rgb(0 0 0 / .10), 0 2px 4px -2px rgb(0 0 0 / .10); }
+        @media (min-width:768px){
+            .md\:h-56{ height:14rem; }
+            .md\:w-56{ width:14rem; }
+        }
+
+        /* --- printing & binding price cards --- */
+        .price-grid{
+            display:grid; grid-template-columns:repeat(auto-fit, minmax(262px, 1fr));
+            gap:26px; margin-top:28px;
+        }
+        .price-card{
+            position:relative; overflow:hidden;
+            border-radius:var(--radius-lg); padding:26px 24px 24px;
+            display:flex; flex-direction:column;
+            transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+        }
+        .price-card:hover{ transform:translateY(-10px); box-shadow:0 42px 70px -34px rgba(70,44,18,.55); }
+        .price-card::before{
+            content:''; position:absolute; top:0; left:24px; right:24px; height:3px;
+            background:linear-gradient(90deg, var(--primary), var(--primary-400));
+            transform:scaleX(0); transform-origin:left; transition:transform .55s var(--ease);
+        }
+        .price-card:hover::before{ transform:scaleX(1); }
+
+        .price-head{ display:flex; align-items:center; gap:13px; margin-bottom:16px; }
+        .price-icon{
+            width:50px; height:50px; flex-shrink:0; border-radius:16px; display:grid; place-items:center;
+            font-size:1.15rem; color:#fff;
+            background:linear-gradient(140deg, var(--primary-400), var(--primary-600));
+            box-shadow:0 14px 28px -14px rgba(230,126,34,.95);
+        }
+        .price-head h3{ font-size:1.08rem; font-weight:800; letter-spacing:-.02em; line-height:1.25; }
+        .price-head .sub{
+            display:flex; align-items:center; flex-wrap:wrap; gap:9px;
+            font-size:.7rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+            color:var(--muted); margin-top:5px;
+        }
+        .badge-new{
+            font-size:.63rem; font-weight:800; letter-spacing:.05em; text-transform:none; color:#fff;
+            background:linear-gradient(135deg, var(--primary), var(--primary-600));
+            padding:4px 10px; border-radius:999px; line-height:1.45;
+            box-shadow:0 10px 20px -12px rgba(230,126,34,.95);
+        }
+
+        .price-list{ list-style:none; display:flex; flex-direction:column; margin-bottom:22px; }
+        .price-list li{
+            display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+            padding:12px 0; border-bottom:1px dashed rgba(22,17,12,.14);
+        }
+        .price-list li:last-child{ border-bottom:0; padding-bottom:2px; }
+        .price-list .label{ font-size:.9rem; font-weight:500; color:var(--ink-soft); }
+        .price-list .amount{ font-size:1.02rem; font-weight:800; letter-spacing:-.02em; color:var(--primary-600); white-space:nowrap; }
+        .price-list .amount em{ font-style:normal; font-size:.72rem; font-weight:600; color:var(--muted); }
+        .price-card .btn{ margin-top:auto; }
+
+        /* --- section tagline --- */
+        .service-cta{
+            margin-top:32px; padding:26px 32px; border-radius:var(--radius-xl);
+            display:flex; align-items:center; justify-content:space-between; gap:22px; flex-wrap:wrap;
+            background:linear-gradient(120deg, rgba(230,126,34,.16), rgba(255,255,255,.55));
+        }
+        .service-cta .tagline{ font-size:clamp(1.05rem, 2.2vw, 1.32rem); font-weight:800; letter-spacing:-.02em; color:var(--ink); }
+        .service-cta .tagline a{ color:var(--primary-600); text-decoration:none; border-bottom:2px solid rgba(230,126,34,.35); transition:border-color .3s, color .3s; }
+        .service-cta .tagline a:hover{ color:var(--primary-600); border-bottom-color:var(--primary); }
+
+        /* ============ FEEDBACK ============ */
+        .feedback-wrap{ display:grid; grid-template-columns:.9fr 1.1fr; gap:44px; align-items:center; }
+        .feedback-copy h2{ font-size:clamp(2rem,4vw,2.7rem); font-weight:800; letter-spacing:-.035em; line-height:1.14; margin:18px 0 14px; }
+        .feedback-copy p{ color:var(--ink-soft); }
+        .quote-mark{ font-size:3.4rem; color:rgba(230,126,34,.35); line-height:1; margin-bottom:6px; }
+
+        .form-card{ border-radius:var(--radius-xl); padding:34px; }
+        .field{ margin-bottom:16px; }
+        .field label{ display:block; font-size:.74rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+        .field input, .field textarea{
+            width:100%; padding:14px 18px; border-radius:14px; font-family:inherit; font-size:.97rem; color:var(--ink);
+            background:rgba(255,255,255,.68); border:1px solid rgba(22,17,12,.10);
+            transition:border .3s, box-shadow .3s, background .3s; resize:vertical;
+        }
+        .field input::placeholder, .field textarea::placeholder{ color:#a89e94; }
+        .field input:focus, .field textarea:focus{
+            outline:none; background:#fff; border-color:rgba(230,126,34,.55);
+            box-shadow:0 0 0 4px rgba(230,126,34,.14);
+        }
+        .form-note{ font-size:.78rem; color:var(--muted); text-align:center; margin-top:14px; }
+
+        /* ============ FOOTER ============ */
+        footer{
+            position:relative; color:#fff; padding:72px 0 26px; overflow:hidden;
+            background:radial-gradient(900px 380px at 12% 0%, rgba(230,126,34,.30), transparent 60%),
+                       radial-gradient(700px 400px at 95% 100%, rgba(255,157,66,.18), transparent 60%),
+                       #100d0b;
+        }
+        .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:52px; margin-bottom:44px; }
+        .footer-brand{ display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+        .footer-logo{
+            width:40px; height:40px; object-fit:cover; border-radius:12px;
+            background:#fdfaf4; border:1px solid rgba(255,255,255,.18);
+            box-shadow:0 10px 26px -12px rgba(0,0,0,.85);
+            transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+        }
+        .footer-brand:hover .footer-logo{ transform:rotate(-4deg) scale(1.08); box-shadow:0 16px 30px -12px rgba(230,126,34,.55); }
+        .footer-brand h3{ font-size:1.3rem; font-weight:800; letter-spacing:-.02em; }
+        footer p{ color:#a49a92; font-size:.93rem; line-height:1.85; max-width:430px; }
+        footer h4{ font-size:1.05rem; font-weight:700; margin-bottom:20px; letter-spacing:-.01em; }
+        .social-icons{ display:flex; gap:12px; margin-top:24px; }
+        .social-icons a{
+            width:44px; height:44px; border-radius:14px; display:grid; place-items:center;
+            background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); color:#fff;
+            -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+            transition:transform .35s var(--ease), background .3s, border-color .3s;
+        }
+        .social-icons a:hover{ transform:translateY(-5px); background:var(--primary); border-color:var(--primary); }
+        .contact-list li{ display:flex; align-items:flex-start; gap:12px; color:#a49a92; font-size:.93rem; margin-bottom:16px; list-style:none; }
+        .contact-list i{ color:var(--primary); margin-top:5px; width:18px; text-align:center; }
+        .footer-bottom{ border-top:1px solid rgba(255,255,255,.10); padding-top:22px; text-align:center; color:#6f665f; font-size:.82rem; }
+
+        /* ============ REVEAL ============ */
+        .reveal{ opacity:0; transform:translateY(34px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
+        .reveal.in{ opacity:1; transform:none; }
+        .reveal.d1{ transition-delay:.10s; } .reveal.d2{ transition-delay:.20s; } .reveal.d3{ transition-delay:.30s; }
+        /* cards keep a snappy hover lift even though they are reveal targets */
+        .card.reveal.in,
+        .service-card.reveal.in,
+        .price-card.reveal.in,
+        .service-cta.reveal.in{ transition:opacity .8s var(--ease), transform .5s var(--ease), box-shadow .5s var(--ease); transition-delay:.15s, 0s, 0s; }
+        .card.reveal.d1.in, .price-card.reveal.d1.in{ transition-delay:.25s, 0s, 0s; }
+        .card.reveal.d2.in, .price-card.reveal.d2.in{ transition-delay:.35s, 0s, 0s; }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width:960px){
+            .hero-grid{ grid-template-columns:1fr; gap:46px; }
+            .hero{ padding:140px 0 60px; }
+            .hero p.lead{ max-width:none; }
+            .feedback-wrap{ grid-template-columns:1fr; }
+            .service-card{
+                grid-template-columns:1fr;
+                grid-template-areas:"icon" "media" "body";
+                justify-items:center; text-align:center; padding:38px 26px; gap:28px;
+            }
+            .service-body{ width:100%; align-items:center; }
+            .service-body p{ margin-inline:auto; }
+            .service-body .btn{ align-self:center; margin-top:26px; }
+            .service-media{ padding-right:0; }
+            .chips{ justify-content:center; }
+            .service-cta{ flex-direction:column; align-items:center; text-align:center; padding:24px 22px; }
+            .footer-grid{ grid-template-columns:1fr; gap:38px; }
+        }
+        @media (max-width:860px){
+            .nav-toggle{ display:flex; }
+            .nav{ border-radius:26px; flex-wrap:wrap; padding:12px 12px 12px 18px; }
+            .nav-links{
+                flex-direction:column; align-items:stretch; width:100%; gap:4px;
+                max-height:0; overflow:hidden; opacity:0;
+                transition:max-height .45s var(--ease), opacity .35s, margin .35s;
+            }
+            .nav-links.open{ max-height:340px; opacity:1; margin-top:12px; padding-top:10px; border-top:1px solid var(--line); }
+            .nav-links a{ padding:12px 16px; }
+            .nav-links a::after{ display:none; }
+            .chip-1{ left:8px; top:76px; } .chip-2{ right:8px; top:24px; }
+            .chip-3{ left:8px; bottom:96px; } .chip-4{ right:8px; bottom:44px; }
+        }
+        @media (max-width:520px){
+            section{ padding:70px 0; }
+            .hero-stats{ gap:22px; }
+            .hero-stats b{ font-size:1.3rem; }
+            .form-card{ padding:26px 20px; }
+            .float-chip{ font-size:.76rem; padding:9px 13px; }
+        }
+
+        @media (prefers-reduced-motion:reduce){
+            *{ animation:none !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+            .reveal{ opacity:1; transform:none; }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">BIZKY SHOP</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#feedback">Feedback</a></li>
-        </ul>
-    </nav>
+    <div class="liquid" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+    </div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="progress" id="progress"></div>
 
-    <!-- TUKAR GAMBAR PIZZA KEPADA POSTER KAU -->
-    <div id="home">
-        <img src="poster.jfif" class="hero-image" alt="Bizky Poster">
+    <!-- NAV -->
+    <div class="nav-wrap" id="navWrap">
+        <div class="container">
+            <nav class="nav">
+                <a href="#home" class="logo">
+                    <img src="logo.jpeg" alt="BIZKY Shop Logo" class="logo-img">
+                    <span class="logo-text">BIZKY<em>SHOP</em><span>Food &amp; Printing</span></span>
+                </a>
+
+                <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 
-    <section id="products">
-        <h2 class="title">Produk Kami</h2>
-        <div class="grid">
-            <div class="card">
-                <!-- TUKAR GAMBAR CHOCOJAR KEPADA GAMBAR BARU KAU -->
-                <img src="chocojar-baru.jfif" alt="Chocojar Bizky">
-                <h3>Chocojar Premium</h3>
-                <div class="price">RM 10.00</div>
-                <a href="https://wa.me/601133512092?text=hi,nak%20beli%20chocojar" class="btn-buy">WhatsApp Order</a>
-            </div>
-<!-- KAD RAMEN SLIDER PENUH -->
-            <div class="card">
-                <div style="position: relative; width: 100%; height: 230px; border-radius: 12px; overflow: hidden; margin-bottom: 15px; border: 1.5px solid #e0e0e0; background: #ffffff; display: flex; align-items: center; justify-content: center;">
-                    
-                    <!-- Butang Kiri (<) -->
-                    <button onclick="prevRamen()" style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.55); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; z-index: 10; font-weight: bold; display: flex; align-items: center; justify-content: center;">❮</button>
-                    
-                    <!-- Gambar Perisa Ramen -->
-                    <img id="ramenImg" src="ramen samyang.jpg" alt="Ramen Samyang" style="width: 100%; height: 100%; object-fit: contain; transform: scale(1.16); transition: 0.2s;">
-                    
-                    <!-- Butang Kanan (>) -->
-                    <button onclick="nextRamen()" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.55); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; z-index: 10; font-weight: bold; display: flex; align-items: center; justify-content: center;">❯</button>
+    <!-- HOME -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-copy reveal">
+                <span class="eyebrow">TVET Mara Besut</span>
+                <h1>Ramen terangkat, chop rangup, <span class="grad">cetak cepat.</span></h1>
+                <p class="lead">BIZKY Shop menggabungkan comfort food kegemaran ramai dengan servis printing assignment untuk student — semua dalam satu tempat, order terus melalui WhatsApp.</p>
+
+                <div class="hero-actions">
+                    <a href="#products" class="btn btn-primary">Lihat Menu <i class="fas fa-arrow-down"></i></a>
+                    <a href="#services" class="btn btn-ghost">Servis Kami</a>
                 </div>
 
-                <!-- Nama Perisa Automatik -->
-                <h3 id="ramenTitle">Ramen Samyang</h3>
-                <div class="price">RM 6.00</div>
-                
-                <!-- Butang WhatsApp Order -->
-                <a id="ramenBtn" href="https://wa.me/60197945644?text=Hi,%20saya%20nak%20order%20Ramen%20Samyang" class="btn-buy" target="_blank">WhatsApp Order</a>
-            </div>
-            <div class="card">
-                <img src="chicken-chop.jpg" alt="Chicken Chop">
-                <h3>Chicken Chop Crispy</h3>
-                <div class="price">RM 6.00</div>
-                <a href="https://wa.me/60197945644?text=Nak%20Chicken%20Chop" class="btn-buy">WhatsApp Order</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" style="background: white;">
-        <h2 class="title">Servis Kami</h2>
-        <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; text-align: center;">
-            <div style="max-width: 250px;">
-                <i class="fas fa-print" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Printing Assignment</h3>
-                <p>B&W / Color - Harga Student!</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="feedback" style="background: #f1f1f1; text-align: center;">
-        <h2>Customer Feedback</h2>
-        <div style="max-width: 500px; margin: auto; background: white; padding: 25px; border-radius: 15px;">
-            <input type="text" id="fbNama" placeholder="Nama Anda" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
-            <textarea id="fbMesej" rows="4" placeholder="Komen anda..." style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
-            <button id="fbBtn" style="background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%;">Hantar Feedback</button>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold; font-size: 1.2rem;">B</div>
-                    <h3 style="margin:0">byHAQ</h3>
-                </div>
-                <p>Chicken chop rangup, chocojar sedap, ramen terangkat, dan servis printing assignment dengan harga berpatutan.</p>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/share/14oFTY2jjny/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/bizky_shop?utm_source=qr&stkn=eXAxZ3kxeG11YzZ2" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/60197945644" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h3>Hubungi Kami</h3>
-                <ul class="contact-list">
-                    <li><i class="fas fa-map-marker-alt"></i> Besut, Terengganu</li>
-                    <li><i class="fas fa-phone"></i> 019-794 5644</li>
-                    <li><i class="fas fa-envelope"></i> byhaq66@gmail.com</li>
+                <ul class="hero-stats">
+                    <li><b>10+</b><span>Perisa ramen</span></li>
+                    <li><b>RM 6</b><span>Harga bermula</span></li>
+                    <li><b>Student</b><span>Harga berpatutan</span></li>
                 </ul>
             </div>
+
+            <div class="hero-visual reveal d1">
+                <div class="hero-float">
+                    <div class="hero-card glass">
+                        <img src="poster.jfif" alt="Bizky Poster">
+                    </div>
+                </div>
+                <div class="float-chip chip-1"><i class="fas fa-fire-flame-curved"></i> Ramen</div>
+                <div class="float-chip chip-2"><i class="fas fa-cookie-bite"></i> Chocojar</div>
+                <div class="float-chip chip-3"><i class="fas fa-drumstick-bite"></i> Chicken Chop</div>
+                <div class="float-chip chip-4"><i class="fas fa-print"></i> B&amp;W / Color Printing</div>
+            </div>
         </div>
-        <div class="footer-bottom">&copy; 2024 BIZKY ENTERPRISE | Powered by Firebase</div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Menu Pilihan</span>
+                <h2>Produk <span class="grad">Kami</span></h2>
+                <p>Disiapkan segar setiap hari. Order terus melalui WhatsApp untuk pick-up atau delivery.</p>
+            </div>
+
+            <div class="grid">
+                <!-- Chocojar -->
+                <article class="card glass reveal">
+                    <div class="card-media">
+                        <img src="chocojar-baru.jfif" alt="Chocojar Bizky">
+                    </div>
+                    <h3>Chocojar Premium</h3>
+                    <p class="desc">Dessert coklat pekat dalam jar</p>
+                    <div class="price">RM 10.00</div>
+                    <a href="https://wa.me/601133512092?text=hi,nak%20beli%20chocojar" class="btn btn-primary btn-block" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Order
+                    </a>
+                </article>
+
+                <!-- Ramen Slider -->
+                <article class="card card-slider glass reveal d1">
+                    <div class="card-media">
+                        <button class="slider-btn prev" onclick="prevRamen()" aria-label="Perisa sebelumnya">&#10094;</button>
+                        <img id="ramenImg" src="ramen samyang.jpg" alt="Ramen Samyang" style="transform:scale(1.16);">
+                        <button class="slider-btn next" onclick="nextRamen()" aria-label="Perisa seterusnya">&#10095;</button>
+                    </div>
+                    <h3 id="ramenTitle">Ramen Samyang</h3>
+                    <p class="desc">Pilih perisa kegemaran anda</p>
+                    <div class="price">RM 6.00</div>
+                    <a id="ramenBtn" href="https://wa.me/60197945644?text=Hi,%20saya%20nak%20order%20Ramen%20Samyang" class="btn btn-primary btn-block" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Order
+                    </a>
+                    <div class="slider-dots" id="ramenDots" aria-hidden="true"></div>
+                </article>
+
+                <!-- Chicken Chop -->
+                <article class="card glass reveal d2">
+                    <div class="card-media">
+                        <img src="chicken-chop.jpg" alt="Chicken Chop">
+                    </div>
+                    <h3>Chicken Chop Crispy</h3>
+                    <p class="desc">Rangup di luar, juicy di dalam</p>
+                    <div class="price">RM 6.00</div>
+                    <a href="https://wa.me/60197945644?text=Nak%20Chicken%20Chop" class="btn btn-primary btn-block" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Order
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Apa Kami Buat</span>
+                <h2>Servis <span class="grad">Kami</span></h2>
+                <p>Print assignment tanpa pening kepala — harga student, siap pantas.</p>
+            </div>
+
+            <div class="service-card glass reveal d1">
+                <div class="service-icon"><i class="fas fa-print"></i></div>
+
+                <div class="service-body">
+                    <h3>Printing Assignment</h3>
+                    <p>Hantar fail anda, kami siapkan. Printing untuk assignment, report dan dokumentasi dengan kualiti bersih dan harga yang mesra student.</p>
+                    <ul class="chips">
+                        <li>Black &amp; White</li>
+                        <li>Full Color</li>
+                        <li>Harga Student</li>
+                        <li>Siap Pantas</li>
+                    </ul>
+                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Sekarang
+                    </a>
+                </div>
+
+                <figure class="service-media">
+                    <img src="printing.jpeg"
+                         alt="Printing Assignment - contoh hasil cetakan"
+                         class="service-img w-48 h-48 md:w-56 md:h-56 object-cover rounded-2xl shadow-md"
+                         loading="lazy">
+                </figure>
+            </div>
+
+            <!-- PRICE LIST: Hitam Putih / Berwarna / Binding -->
+            <div class="price-grid">
+
+                <article class="price-card glass reveal">
+                    <div class="price-head">
+                        <span class="price-icon"><i class="fas fa-file-lines"></i></span>
+                        <div>
+                            <h3>Hitam Putih</h3>
+                            <span class="sub">Black &amp; White</span>
+                        </div>
+                    </div>
+                    <ul class="price-list">
+                        <li>
+                            <span class="label">Hitam Putih (1 muka)</span>
+                            <span class="amount">RM0.30 <em>/ helai</em></span>
+                        </li>
+                        <li>
+                            <span class="label">Hitam Putih (depan belakang)</span>
+                            <span class="amount">RM0.40 <em>/ helai</em></span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary btn-block" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> Tempah Sekarang
+                    </a>
+                </article>
+
+                <article class="price-card glass reveal d1">
+                    <div class="price-head">
+                        <span class="price-icon"><i class="fas fa-palette"></i></span>
+                        <div>
+                            <h3>Berwarna</h3>
+                            <span class="sub">Full Color</span>
+                        </div>
+                    </div>
+                    <ul class="price-list">
+                        <li>
+                            <span class="label">Berwarna (1 muka)</span>
+                            <span class="amount">RM0.50 <em>/ helai</em></span>
+                        </li>
+                        <li>
+                            <span class="label">Berwarna (depan belakang)</span>
+                            <span class="amount">RM0.60 <em>/ helai</em></span>
+                        </li>
+                        <li>
+                            <span class="label">Slide / Gambar penuh</span>
+                            <span class="amount">RM0.50 <em>/ helai</em></span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary btn-block" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> Tempah Sekarang
+                    </a>
+                </article>
+
+                <article class="price-card glass reveal d2">
+                    <div class="price-head">
+                        <span class="price-icon"><i class="fas fa-book-open"></i></span>
+                        <div>
+                            <h3>Binding &amp; Accessories</h3>
+                            <span class="sub">Binding <span class="badge-new">Terbaru!</span></span>
+                        </div>
+                    </div>
+                    <ul class="price-list">
+                        <li>
+                            <span class="label">Binder Rod A4</span>
+                            <span class="amount">RM0.50 <em>/ unit</em></span>
+                        </li>
+                        <li>
+                            <span class="label">Plastic Cover A4</span>
+                            <span class="amount">RM0.50 <em>/ unit</em></span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary btn-block" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> Tempah Sekarang
+                    </a>
+                </article>
+
+            </div>
+
+            <!-- TAGLINE -->
+            <div class="service-cta glass reveal">
+                <p class="tagline">Mudah, Cepat, Jimat. Hubungi <a href="tel:01157089433">011-57089433</a> sekarang!</p>
+                <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEEDBACK -->
+    <section id="feedback">
+        <div class="container feedback-wrap">
+            <div class="feedback-copy reveal">
+                <span class="eyebrow">Customer Feedback</span>
+                <h2>Nak bagi <span class="grad">pendapat?</span></h2>
+                <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                <p>Maklum balas anda membantu kami tambah baik servis dan menu. Tulis apa sahaja — kami baca setiap satu.</p>
+            </div>
+
+            <div class="form-card glass reveal d1">
+                <div class="field">
+                    <label for="fbNama">Nama Anda</label>
+                    <input type="text" id="fbNama" placeholder="Contoh: Aiman" autocomplete="name">
+                </div>
+                <div class="field">
+                    <label for="fbMesej">Komen</label>
+                    <textarea id="fbMesej" rows="4" placeholder="Ceritakan pengalaman anda..."></textarea>
+                </div>
+                <button id="fbBtn" class="btn btn-primary btn-block">
+                    <i class="fas fa-paper-plane"></i> Hantar Feedback
+                </button>
+                <p class="form-note">Kami tidak memaparkan maklum peribadi anda di mana-mana.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <img src="logo.jpeg" alt="BIZKY Shop Logo" class="footer-logo">
+                        <h3>BIZKY SHOP</h3>
+                    </div>
+                    <p>Chicken chop rangup, chocojar sedap, ramen terangkat, dan servis printing assignment dengan harga berpatutan.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/14oFTY2jjny/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/bizky_shop?utm_source=qr&stkn=eXAxZ3kxeG11YzZ2" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/60197945644" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Hubungi Kami</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-map-marker-alt"></i> TVET Mara Besut</li>
+                        <li><i class="fas fa-phone"></i> 019-794 5644</li>
+                        <li><i class="fas fa-envelope"></i> byhaq66@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2024 BIZKY ENTERPRISE | Powered by Firebase</div>
+        </div>
     </footer>
 
     <script type="module" src="app.js"></script>
-  <script>
-    // Senarai Lengkap: Cover Semua Perisa + 9 Pilihan Perisa Samyang
-    const ramenList = [
-        {
-            name: "Ramen Samyang",
-            img: "ramen samyang.jpg",
-            scale: "1.16"
-        },
-        {
-            name: "Original Hot",
-            img: "https://cdn.buldak.com/images/1784783544088-my-pouch-noodles-product-buldak-ramen-original_20260723141222.png?w=512&q=80&fit=contain",
-            scale: "1.0"
-        },
-        {
-            name: "2X Spicy",
-            img: "2x Spicy.jpg",
-            scale: "1.0"
-        },
-        {
-            name: "Stew Type",
-            img: "Stew.jpg",
-            scale: "1.0"
-        },
-        {
-            name: "Cheese",
-            img: "Cheese.jpg",
-            scale: "1.0"
-        },
-        {
-            name: "Carbonara",
-            img: "https://cdn.buldak.com/images/1779976381501-my-pouch-noodles-product-buldak-ramen-carbonara_20260528215259.webp",
-            scale: "1.0"
-        },
-        {
-            name: "Jjajang",
-            img: "jjajang.jpg",
-            scale: "1.0"
-        },
-        {
-            name: "Cream Carbonara",
-            img: "Cream Carbonara.jpg",
-            scale: "1.0"
-        },
-        {
-            name: "Quattro Cheese",
-            img: "Quattro Cheese.jpg",
-            scale: "1.0"
-        },
-        {
-            name: "Rosé",
-            img: "https://cdn.buldak.com/images_dev/1758256486240-22_Buldak%20Ramen%20Rose_140g.webp?w=512&q=80&fit=contain",
-            scale: "1.0"
+
+    <script>
+        /* ===== Ramen slider ===== */
+        const ramenList = [
+            { name: "Ramen Samyang",     img: "ramen samyang.jpg", scale: "1.16" },
+            { name: "Original Hot",      img: "https://cdn.buldak.com/images/1784783544088-my-pouch-noodles-product-buldak-ramen-original_20260723141222.png?w=512&q=80&fit=contain", scale: "1.0" },
+            { name: "2X Spicy",          img: "2x Spicy.jpg", scale: "1.0" },
+            { name: "Stew Type",         img: "Stew.jpg", scale: "1.0" },
+            { name: "Cheese",            img: "Cheese.jpg", scale: "1.0" },
+            { name: "Carbonara",         img: "https://cdn.buldak.com/images/1779976381501-my-pouch-noodles-product-buldak-ramen-carbonara_20260528215259.webp", scale: "1.0" },
+            { name: "Jjajang",           img: "jjajang.jpg", scale: "1.0" },
+            { name: "Cream Carbonara",   img: "Cream Carbonara.jpg", scale: "1.0" },
+            { name: "Quattro Cheese",    img: "Quattro Cheese.jpg", scale: "1.0" },
+            { name: "Rosé",              img: "https://cdn.buldak.com/images_dev/1758256486240-22_Buldak%20Ramen%20Rose_140g.webp?w=512&q=80&fit=contain", scale: "1.0" }
+        ];
+
+        let currentIndex = 0;
+        const dotsBox = document.getElementById('ramenDots');
+        ramenList.forEach((_, i) => {
+            const d = document.createElement('i');
+            if (i === 0) d.className = 'on';
+            dotsBox.appendChild(d);
+        });
+
+        function updateRamen() {
+            const item = ramenList[currentIndex];
+            const imgEl = document.getElementById('ramenImg');
+            imgEl.style.opacity = '0';
+            setTimeout(() => {
+                imgEl.src = item.img;
+                imgEl.style.transform = `scale(${item.scale})`;
+                imgEl.style.opacity = '1';
+            }, 140);
+
+            document.getElementById('ramenTitle').innerText = item.name;
+            document.getElementById('ramenBtn').href = "https://wa.me/60197945644?text=" + encodeURIComponent("Hi, saya nak order " + item.name);
+            [...dotsBox.children].forEach((d, i) => d.classList.toggle('on', i === currentIndex));
         }
-    ];
+        function nextRamen(){ currentIndex = (currentIndex + 1) % ramenList.length; updateRamen(); }
+        function prevRamen(){ currentIndex = (currentIndex - 1 + ramenList.length) % ramenList.length; updateRamen(); }
 
-    let currentIndex = 0;
+        /* ===== Nav: scrolled state + mobile toggle + scrollspy ===== */
+        const navWrap = document.getElementById('navWrap');
+        const navLinks = document.getElementById('navLinks');
+        const navToggle = document.getElementById('navToggle');
+        const progress = document.getElementById('progress');
 
-    function updateRamen() {
-        const item = ramenList[currentIndex];
-        const imgEl = document.getElementById('ramenImg');
-        
-        imgEl.src = item.img;
-        imgEl.style.transform = `scale(${item.scale})`;
-        
-        document.getElementById('ramenTitle').innerText = item.name;
-        document.getElementById('ramenBtn').href = "https://wa.me/60197945644?text=" + encodeURIComponent("Hi, saya nak order " + item.name);
-    }
+        navToggle.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', open);
+            navToggle.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }));
 
-    function nextRamen() {
-        currentIndex = (currentIndex + 1) % ramenList.length;
-        updateRamen();
-    }
+        const onScroll = () => {
+            const y = window.scrollY;
+            navWrap.classList.toggle('scrolled', y > 20);
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
 
-    function prevRamen() {
-        currentIndex = (currentIndex - 1 + ramenList.length) % ramenList.length;
-        updateRamen();
-    }
-</script>
+        const sections = [...document.querySelectorAll('section[id]')];
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    navLinks.querySelectorAll('a').forEach(a => {
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+                    });
+                }
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach(s => spy.observe(s));
+
+        /* ===== Reveal on scroll ===== */
+        const revealer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('in'); revealer.unobserve(e.target); }
+            });
+        }, { threshold: 0.14 });
+        document.querySelectorAll('.reveal').forEach(el => revealer.observe(el));
+    </script>
 </body>
 </html>
