@@ -15,8 +15,8 @@
         /* ============ DESIGN TOKENS ============ */
         :root{
             --bg: #0b0806;
-            --bg-card: rgba(22, 17, 13, 0.85);
-            --border-glow: rgba(255, 120, 30, 0.25);
+            --bg-card: rgba(22, 17, 13, 0.88);
+            --border-glow: rgba(255, 120, 30, 0.28);
             --primary: #FF6600;
             --primary-bright: #FF8533;
             --gold: #FFB703;
@@ -47,7 +47,7 @@
 
         /* ============ BACKGROUND GLOW ============ */
         .liquid{ position:fixed; inset:0; z-index:-2; overflow:hidden; pointer-events:none; }
-        .blob{ position:absolute; border-radius:50%; filter:blur(130px); opacity:0.38; animation:drift 22s var(--ease) infinite alternate; }
+        .blob{ position:absolute; border-radius:50%; filter:blur(130px); opacity:0.35; animation:drift 22s var(--ease) infinite alternate; }
         .blob-1{ width:50vw; height:50vw; top:-10vw; left:-10vw; background:radial-gradient(circle, #FF4500, transparent 70%); }
         .blob-2{ width:45vw; height:45vw; top:35vh; right:-10vw; background:radial-gradient(circle, #D9480F, transparent 70%); animation-duration:26s; }
         .blob-3{ width:40vw; height:40vw; bottom:-10vw; left:25vw; background:radial-gradient(circle, #FF922B, transparent 70%); animation-duration:30s; }
@@ -68,7 +68,7 @@
             box-shadow:var(--shadow-card);
             transition:transform 0.4s var(--ease), border-color 0.4s var(--ease);
         }
-        .glass:hover{ border-color:rgba(255, 120, 30, 0.5); }
+        .glass:hover{ border-color:rgba(255, 120, 30, 0.55); }
 
         .eyebrow{
             display:inline-flex; align-items:center; gap:9px;
@@ -231,8 +231,8 @@
 
         /* ============ MODAL KUSTOM CHOCOJAR ============ */
         .modal-overlay{
-            position:fixed; inset:0; z-index:3000;
-            background:rgba(0, 0, 0, 0.85); backdrop-filter:blur(10px);
+            position:fixed; inset:0; z-index:4000;
+            background:rgba(0, 0, 0, 0.88); backdrop-filter:blur(10px);
             display:none; place-items:center; padding:20px;
         }
         .modal-overlay.open{ display:grid; }
@@ -247,45 +247,67 @@
             background:rgba(255,255,255,0.1); border:none; color:#fff; font-size:1.1rem;
             cursor:pointer; display:grid; place-items:center;
         }
+        .modal-close:hover{ background:var(--primary); }
         .modal-box h3{ font-size:1.6rem; font-weight:900; margin-bottom:6px; }
         .modal-box p.sub{ color:var(--text-soft); font-size:0.92rem; margin-bottom:24px; }
         
         .opt-title{ font-size:0.9rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
         .pill-group{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
-        .pill-opt{
-            background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+        
+        .pill-btn{
+            background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.15);
             padding:14px; border-radius:16px; cursor:pointer; text-align:center;
-            font-weight:700; font-size:0.94rem; transition:0.25s; user-select:none;
+            color:#fff; font-family:inherit; font-weight:700; font-size:0.95rem; transition:0.25s;
+            display:flex; flex-direction:column; align-items:center; gap:4px;
         }
-        .pill-opt:hover{ border-color:var(--primary); }
-        .pill-opt.active{
-            background:rgba(255, 102, 0, 0.18); border-color:var(--primary);
-            color:#fff; box-shadow:0 0 16px rgba(255, 102, 0, 0.3);
+        .pill-btn:hover{ border-color:var(--primary-bright); }
+        .pill-btn.active{
+            background:rgba(255, 102, 0, 0.22); border-color:var(--primary);
+            color:#fff; box-shadow:0 0 18px rgba(255, 102, 0, 0.4);
         }
+        .pill-price-tag{ font-size:1.1rem; font-weight:900; color:var(--gold); }
 
         /* Topping checklist */
         .toppings-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:26px; }
         .topping-item{
             display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.05);
             border:1px solid rgba(255,255,255,0.1); padding:10px 12px; border-radius:12px;
-            cursor:pointer; font-size:0.86rem; font-weight:600; transition:0.2s;
+            cursor:pointer; font-size:0.86rem; font-weight:600; transition:0.2s; user-select:none;
         }
         .topping-item input{ accent-color:var(--primary); width:16px; height:16px; cursor:pointer; }
         .topping-item:hover{ background:rgba(255,255,255,0.1); }
-        .topping-item.selected{ border-color:var(--primary); background:rgba(255, 102, 0, 0.15); color:#fff; }
+        .topping-item.selected{ border-color:var(--primary); background:rgba(255, 102, 0, 0.2); color:#fff; }
 
         /* Qty selector */
         .qty-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; padding:16px; background:rgba(255,255,255,0.04); border-radius:16px; }
         .qty-controls{ display:flex; align-items:center; gap:12px; }
         .qty-btn{
-            width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.12);
+            width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.15);
             border:none; color:#fff; font-size:1.1rem; cursor:pointer; display:grid; place-items:center;
         }
+        .qty-btn:hover{ background:var(--primary); }
         .qty-val{ font-size:1.2rem; font-weight:800; min-width:30px; text-align:center; }
+
+        /* ============ NOTIFIKASI TOAST (POPUP SELESAI ADD TO CART) ============ */
+        .toast-notify{
+            position:fixed; bottom:100px; left:50%; transform:translateX(-50%) translateY(40px);
+            background:#1f1610; border:2px solid var(--primary-bright); border-radius:999px;
+            padding:12px 24px; display:flex; align-items:center; gap:16px; color:#fff;
+            box-shadow:0 20px 45px rgba(0,0,0,0.85); z-index:3500; opacity:0; pointer-events:none;
+            transition:all 0.35s var(--ease);
+        }
+        .toast-notify.show{
+            opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0);
+        }
+        .toast-msg{ font-weight:800; font-size:0.95rem; }
+        .toast-btn{
+            background:var(--primary-grad); color:#fff; border:none; padding:8px 16px;
+            border-radius:999px; font-weight:800; font-size:0.85rem; cursor:pointer;
+        }
 
         /* ============ FLOATING CART BUTTON & DRAWER ============ */
         .cart-float-btn{
-            position:fixed; bottom:28px; right:28px; z-index:2500;
+            position:fixed; bottom:28px; right:28px; z-index:3000;
             background:var(--primary-grad); color:#fff; border:none;
             padding:16px 26px; border-radius:999px; font-weight:800; font-size:1.05rem;
             display:flex; align-items:center; gap:12px; cursor:pointer;
@@ -300,38 +322,45 @@
 
         /* Cart Drawer (Sisi Kanan) */
         .cart-drawer-overlay{
-            position:fixed; inset:0; z-index:3500; background:rgba(0,0,0,0.7);
+            position:fixed; inset:0; z-index:5000; background:rgba(0,0,0,0.75);
             backdrop-filter:blur(6px); display:none; justify-content:flex-end;
         }
         .cart-drawer-overlay.open{ display:flex; }
         .cart-drawer{
-            width:100%; max-width:440px; height:100%; background:#140e0b;
+            width:100%; max-width:460px; height:100%; background:#140e0b;
             border-left:2px solid var(--border-glow); display:flex; flex-direction:column;
-            padding:32px 24px; box-shadow:-20px 0 50px rgba(0,0,0,0.8);
+            padding:30px 24px; box-shadow:-20px 0 50px rgba(0,0,0,0.8);
             animation:slideLeft 0.35s var(--ease);
         }
         @keyframes slideLeft{ from{ transform:translateX(100%); } to{ transform:translateX(0); } }
-        .cart-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.1); }
-        .cart-head h3{ font-size:1.5rem; font-weight:900; display:flex; align-items:center; gap:10px; }
+        .cart-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.1); }
+        .cart-head h3{ font-size:1.45rem; font-weight:900; display:flex; align-items:center; gap:10px; }
         
-        .cart-items{ flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:16px; margin-bottom:20px; }
+        .continue-shopping-btn{
+            background:rgba(255,255,255,0.08); color:var(--gold); border:1px solid rgba(255, 183, 3, 0.3);
+            border-radius:12px; padding:10px 14px; font-weight:800; font-size:0.88rem; cursor:pointer;
+            display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:16px;
+        }
+        .continue-shopping-btn:hover{ background:rgba(255, 183, 3, 0.15); }
+
+        .cart-items{ flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:14px; margin-bottom:18px; }
         .cart-empty{ text-align:center; color:var(--text-muted); margin:auto 0; }
         .cart-empty i{ font-size:3rem; margin-bottom:12px; opacity:0.3; }
 
         .cart-item{
             background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
-            border-radius:18px; padding:16px; display:flex; flex-direction:column; gap:8px;
+            border-radius:16px; padding:16px; display:flex; flex-direction:column; gap:8px;
         }
         .cart-item-top{ display:flex; justify-content:space-between; align-items:flex-start; }
-        .cart-item-name{ font-weight:800; font-size:1rem; color:#fff; }
-        .cart-item-desc{ font-size:0.8rem; color:var(--gold); }
-        .cart-item-del{ background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:0.95rem; }
+        .cart-item-name{ font-weight:800; font-size:0.98rem; color:#fff; }
+        .cart-item-desc{ font-size:0.8rem; color:var(--gold); line-height:1.4; margin-top:2px; }
+        .cart-item-del{ background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1rem; padding:4px; }
         .cart-item-del:hover{ color:#ff4d4f; }
         .cart-item-bottom{ display:flex; justify-content:space-between; align-items:center; margin-top:6px; }
         .cart-item-price{ font-weight:900; font-size:1.05rem; color:var(--primary-bright); }
 
-        .cart-footer{ border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; }
-        .cart-total-row{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+        .cart-footer{ border-top:1px solid rgba(255,255,255,0.1); padding-top:18px; }
+        .cart-total-row{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
         .cart-total-row span{ font-size:1rem; color:var(--text-soft); }
         .cart-total-row b{ font-size:1.6rem; font-weight:900; color:var(--gold); }
 
@@ -528,7 +557,7 @@
             <div class="section-head">
                 <span class="eyebrow"><i class="fas fa-utensils"></i> Menu Pilihan</span>
                 <h2>Pilih &amp; <span class="grad">Tambah Ke Troli</span></h2>
-                <p>Pilih hidangan, kustom perisa &amp; topping, lalu semak dalam troli anda.</p>
+                <p>Boleh pilih banyak Chocojar, Ramen dan Chicken Chop serentak dalam satu pesanan!</p>
             </div>
 
             <div class="grid">
@@ -539,11 +568,11 @@
                         <img src="chocojar-baru.jfif" alt="Chocojar Bizky">
                     </div>
                     <h3>Chocojar Premium</h3>
-                    <p class="desc">Pilihan White Choc / Chocolate + 12 Topping </p>
-                    <div class="price">RM 7.00 - RM 10.00</div>
+                    <p class="desc">Pilihan White Choc / Chocolate + 12 Topping Mewah</p>
+                    <div class="price">RM 7.00 (300ml) / RM 10.00 (500ml)</div>
                     <div class="card-actions">
                         <button class="btn btn-primary btn-block" onclick="openChocojarModal()">
-                            <i class="fas fa-sliders"></i> Kustom &amp; Tambah Troli
+                            <i class="fas fa-sliders"></i> Kustom &amp; Tambah Ke Troli
                         </button>
                     </div>
                 </article>
@@ -577,7 +606,7 @@
                     <p class="desc">Ayam rangup di luar, empuk di dalam bersama sos blackpepper</p>
                     <div class="price">RM 6.00</div>
                     <div class="card-actions">
-                        <button class="btn btn-primary btn-block" onclick="addToCart('Chicken Chop Crispy', 6.00, 'Original Blackpepper Sauce')">
+                        <button class="btn btn-primary btn-block" onclick="addToCart('Chicken Chop Crispy', 6.00, 'Sos Blackpepper Original')">
                             <i class="fas fa-cart-plus"></i> Tambah Ke Troli
                         </button>
                     </div>
@@ -722,26 +751,38 @@
             <!-- 1. Perisa -->
             <div class="opt-title"><i class="fas fa-droplet"></i> 1. Pilih Perisa Coklat</div>
             <div class="pill-group" id="flavorGroup">
-                <div class="pill-opt active" onclick="selectFlavor(this, 'Chocolate')">🍫 Chocolate</div>
-                <div class="pill-opt" onclick="selectFlavor(this, 'White Chocolate')">🥛 White Chocolate</div>
+                <button type="button" class="pill-btn active" onclick="selectFlavor(this, 'Chocolate')">
+                    <span>🍫 Chocolate</span>
+                </button>
+                <button type="button" class="pill-btn" onclick="selectFlavor(this, 'White Chocolate')">
+                    <span>🥛 White Chocolate</span>
+                </button>
             </div>
 
             <!-- 2. Saiz -->
             <div class="opt-title"><i class="fas fa-jar"></i> 2. Pilih Saiz Balang</div>
             <div class="pill-group" id="sizeGroup">
-                <div class="pill-opt active" onclick="selectSize(this, '300 ml', 7.00)">300 ml (RM 7.00)</div>
-                <div class="pill-opt" onclick="selectSize(this, '500 ml', 10.00)">500 ml (RM 10.00)</div>
+                <button type="button" class="pill-btn active" id="btnSize300" onclick="selectSize(this, '300 ml', 7.00)">
+                    <span>Saiz 300 ml</span>
+                    <span class="pill-price-tag">RM 7.00</span>
+                </button>
+                <button type="button" class="pill-btn" id="btnSize500" onclick="selectSize(this, '500 ml', 10.00)">
+                    <span>Saiz 500 ml</span>
+                    <span class="pill-price-tag">RM 10.00</span>
+                </button>
             </div>
 
             <!-- 3. Topping -->
-            <div class="opt-title"><i class="fas fa-candy-cane"></i> 3. Pilih Topping</div>
+            <div class="opt-title">
+                <span><i class="fas fa-candy-cane"></i> 3. Pilih Topping</span>
+                <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600; text-transform:none;">(Percuma &amp; Boleh Pilih Banyak)</span>
+            </div>
             <div class="toppings-grid" id="toppingsList">
-                <!-- 12 Topping Yang Diminta -->
                 <label class="topping-item"><input type="checkbox" value="Kinder Bueno"> Kinder Bueno</label>
                 <label class="topping-item"><input type="checkbox" value="Toblerone"> Toblerone</label>
-                <label class="topping-item"><input type="checkbox" value="Nutella"> Nutella</label>
+                <label class="topping-item"><input type="checkbox" value="Nutella B-ready"> Nutella B-ready</label>
                 <label class="topping-item"><input type="checkbox" value="Daim"> Daim</label>
-                <label class="topping-item"><input type="checkbox" value="Kisses"> Kisses</label>
+                <label class="topping-item"><input type="checkbox" value="Hershey’s Kisses"> Hershey’s Kisses</label>
                 <label class="topping-item"><input type="checkbox" value="Lotus Biscoff"> Lotus Biscoff</label>
                 <label class="topping-item"><input type="checkbox" value="Oreo"> Oreo</label>
                 <label class="topping-item"><input type="checkbox" value="Cream-O"> Cream-O</label>
@@ -755,32 +796,44 @@
             <div class="qty-row">
                 <span style="font-weight:800; font-size:1rem;">Kuantiti Balang:</span>
                 <div class="qty-controls">
-                    <button class="qty-btn" onclick="changeChocoQty(-1)"><i class="fas fa-minus"></i></button>
+                    <button type="button" class="qty-btn" onclick="changeChocoQty(-1)"><i class="fas fa-minus"></i></button>
                     <span class="qty-val" id="chocoQty">1</span>
-                    <button class="qty-btn" onclick="changeChocoQty(1)"><i class="fas fa-plus"></i></button>
+                    <button type="button" class="qty-btn" onclick="changeChocoQty(1)"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
 
-            <button class="btn btn-primary btn-block" onclick="confirmChocojarToCart()">
-                <i class="fas fa-cart-plus"></i> Masukkan Ke Troli (<span id="chocoModalPrice">RM 10.00</span>)
+            <button type="button" class="btn btn-primary btn-block" onclick="confirmChocojarToCart()">
+                <i class="fas fa-cart-plus"></i> Masukkan Ke Troli (<span id="chocoModalPrice">RM 7.00</span>)
             </button>
         </div>
+    </div>
+
+    <!-- ============ POP-UP NOTIFIKASI TOAST ============ -->
+    <div class="toast-notify" id="toastNotify">
+        <i class="fas fa-check-circle" style="color:#52c41a; font-size:1.2rem;"></i>
+        <span class="toast-msg" id="toastMsg">Item ditambah ke troli!</span>
+        <button type="button" class="toast-btn" onclick="toggleCartDrawer()">Tengok Troli</button>
     </div>
 
     <!-- ============ FLOATING CART BUTTON ============ -->
     <button class="cart-float-btn" id="cartFloatBtn" onclick="toggleCartDrawer()">
         <i class="fas fa-shopping-bag"></i>
-        <span>Troli Pesanan</span>
+        <span>Troli</span>
         <span class="cart-badge" id="cartBadgeCount">0</span>
     </button>
 
-    <!-- ============ CART DRAWER (SLIDE-OVER) ============ -->
+    <!-- ============ CART DRAWER ============ -->
     <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="closeCartOnOutside(event)">
         <div class="cart-drawer" id="cartDrawer">
             <div class="cart-head">
-                <h3><i class="fas fa-shopping-cart" style="color:var(--primary);"></i> Troli Saya</h3>
+                <h3><i class="fas fa-shopping-cart" style="color:var(--primary);"></i> Troli Pesanan</h3>
                 <button class="modal-close" onclick="toggleCartDrawer()" style="position:static;"><i class="fas fa-times"></i></button>
             </div>
+
+            <!-- Butang Sambung Beli -->
+            <button type="button" class="continue-shopping-btn" onclick="toggleCartDrawer()">
+                <i class="fas fa-arrow-left"></i> Sambung Beli Makanan Lain
+            </button>
 
             <div class="cart-items" id="cartItemsContainer">
                 <div class="cart-empty">
@@ -799,8 +852,8 @@
                     <b id="cartTotalDisplay">RM 0.00</b>
                 </div>
 
-                <button class="btn btn-primary btn-block" onclick="checkoutWhatsApp()">
-                    <i class="fab fa-whatsapp"></i> Hantar Pesanan Ke WhatsApp
+                <button type="button" class="btn btn-primary btn-block" onclick="checkoutWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Hantar Semua Pesanan Ke WhatsApp
                 </button>
             </div>
         </div>
@@ -808,7 +861,7 @@
 
     <script type="module" src="app.js"></script>
 
-    <!-- LOGIK JAVASCRIPT: SLIDER RAMEN & CART SYSTEM -->
+    <!-- LOGIK JAVASCRIPT LENGKAP -->
     <script>
         /* ===== SLIDER RAMEN ===== */
         const ramenList = [
@@ -852,33 +905,49 @@
             addToCart("Ramen Buldak (" + item.name + ")", 6.00, "Perisa: " + item.name);
         }
 
-        /* ===== MODAL CHOCOJAR SELECTION ===== */
+        /* ===== MODAL CHOCOJAR ===== */
         let selectedFlavor = "Chocolate";
         let selectedSize = "300 ml";
-        let selectedBasePrice = 10.00;
+        let selectedBasePrice = 7.00; // Default mula dengan 300ml (RM 7.00)
         let chocoQuantity = 1;
 
         function openChocojarModal() {
             document.getElementById('chocojarModal').classList.add('open');
+            
+            // Reset pilihan setiap kali buka modal baru
             chocoQuantity = 1;
             document.getElementById('chocoQty').innerText = '1';
+            
+            // Set default 300 ml (RM 7.00)
+            selectedSize = "300 ml";
+            selectedBasePrice = 7.00;
+            document.querySelectorAll('#sizeGroup .pill-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btnSize300').classList.add('active');
+
+            // Kosongkan checklist topping daripada pilihan lama
+            document.querySelectorAll('#toppingsList input').forEach(input => {
+                input.checked = false;
+                input.parentElement.classList.remove('selected');
+            });
+
             updateModalPrice();
         }
+
         function closeChocojarModal() {
             document.getElementById('chocojarModal').classList.remove('open');
         }
 
         function selectFlavor(el, flavor) {
-            document.querySelectorAll('#flavorGroup .pill-opt').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('#flavorGroup .pill-btn').forEach(p => p.classList.remove('active'));
             el.classList.add('active');
             selectedFlavor = flavor;
         }
 
         function selectSize(el, size, price) {
-            document.querySelectorAll('#sizeGroup .pill-opt').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('#sizeGroup .pill-btn').forEach(p => p.classList.remove('active'));
             el.classList.add('active');
             selectedSize = size;
-            selectedBasePrice = price;
+            selectedBasePrice = parseFloat(price);
             updateModalPrice();
         }
 
@@ -893,7 +962,7 @@
             document.getElementById('chocoModalPrice').innerText = 'RM ' + total.toFixed(2);
         }
 
-        // Topping checkbox visual highlight
+        // Checklist visual highlight
         document.querySelectorAll('#toppingsList input').forEach(input => {
             input.addEventListener('change', function() {
                 this.parentElement.classList.toggle('selected', this.checked);
@@ -903,12 +972,23 @@
         function confirmChocojarToCart() {
             const toppings = [];
             document.querySelectorAll('#toppingsList input:checked').forEach(cb => toppings.push(cb.value));
-            const toppingText = toppings.length > 0 ? "Topping: " + toppings.join(', ') : "Tanpa Topping Tambahan";
+            const toppingText = toppings.length > 0 ? "Topping: " + toppings.join(', ') : "Tanpa Topping";
             const fullDesc = `Saiz: ${selectedSize} | Perisa: ${selectedFlavor} | ${toppingText}`;
 
             addToCart("Chocojar Premium (" + selectedSize + ")", selectedBasePrice, fullDesc, chocoQuantity, true);
             closeChocojarModal();
-            toggleCartDrawer();
+        }
+
+        /* ===== TOAST NOTIFIKASI ===== */
+        let toastTimeout;
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotify');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
 
         /* ===== CART SYSTEM ENGINE ===== */
@@ -922,6 +1002,7 @@
                 cart.push({ name, price, details, qty, isChocojar });
             }
             renderCart();
+            showToast(`${name} dimasukkan ke troli!`);
         }
 
         function updateItemQty(index, delta) {
@@ -964,13 +1045,13 @@
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-desc">${item.details}</div>
                         </div>
-                        <button class="cart-item-del" onclick="removeItem(${idx})"><i class="fas fa-trash"></i></button>
+                        <button type="button" class="cart-item-del" onclick="removeItem(${idx})"><i class="fas fa-trash"></i></button>
                     </div>
                     <div class="cart-item-bottom">
                         <div class="qty-controls">
-                            <button class="qty-btn" style="width:28px; height:28px;" onclick="updateItemQty(${idx}, -1)">-</button>
+                            <button type="button" class="qty-btn" style="width:28px; height:28px;" onclick="updateItemQty(${idx}, -1)">-</button>
                             <span class="qty-val" style="font-size:0.95rem;">${item.qty}</span>
-                            <button class="qty-btn" style="width:28px; height:28px;" onclick="updateItemQty(${idx}, 1)">+</button>
+                            <button type="button" class="qty-btn" style="width:28px; height:28px;" onclick="updateItemQty(${idx}, 1)">+</button>
                         </div>
                         <div class="cart-item-price">RM ${(item.price * item.qty).toFixed(2)}</div>
                     </div>
@@ -986,10 +1067,10 @@
             if (e.target.id === 'cartDrawerOverlay') toggleCartDrawer();
         }
 
-        /* ===== CHECKOUT WHATSAPP DENGAN NOMBOR TEPAT ===== */
+        /* ===== CHECKOUT WHATSAPP ===== */
         function checkoutWhatsApp() {
             if (cart.length === 0) {
-                alert("Troli anda masih kosong! Sila pilih item terlebih dahulu.");
+                alert("Troli anda masih kosong! Sila pilih makanan dahulu.");
                 return;
             }
 
@@ -998,7 +1079,7 @@
 
             let msg = `*PESANAN BIZKY SHOP*\n`;
             msg += `------------------------------------\n`;
-            msg += `👤 *Nama:* ${custName}\n\n`;
+            msg += `👤 *Nama / Lokasi:* ${custName}\n\n`;
             msg += `📋 *SENARAI PESANAN:*\n`;
 
             cart.forEach((item, i) => {
@@ -1008,10 +1089,10 @@
             });
 
             msg += `------------------------------------\n`;
-            msg += `💰 *JUMLAH BAYARAN: RM ${totalPrice.toFixed(2)}*\n\n`;
-            msg += `Mohon sahkan pesanan saya ya! Terima kasih.`;
+            msg += `💰 *JUMLAH KESELURUHAN: RM ${totalPrice.toFixed(2)}*\n\n`;
+            msg += `Mohon proses pesanan saya ya! Terima kasih.`;
 
-            // Jika ada chocojar dalam cart, hubungi nombor chocojar: 01133512092
+            // Jika pesanan mengandungi Chocojar, hantar ke 01133512092
             const hasChocojar = cart.some(item => item.isChocojar);
             const phone = hasChocojar ? "601133512092" : "60197945644";
 
