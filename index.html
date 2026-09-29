@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BIZKY Shop - Chocojar premium melimpah, ramen pedas, chicken chop rangup & servis printing assignment di TVET Mara Besut.">
+    <meta name="description" content="BIZKY Shop - Chocojar kustom pelbagai topping, ramen pedas, chicken chop rangup & servis printing di TVET Mara Besut.">
     <title>BIZKY | Food &amp; Printing - TVET Mara Besut</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,25 +12,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ============ WARNA TEMA GELAP GEMPAK & MEWAH ============ */
+        /* ============ DESIGN TOKENS ============ */
         :root{
             --bg: #0b0806;
-            --bg-card: rgba(22, 17, 13, 0.78);
-            --bg-card-hover: rgba(32, 24, 18, 0.9);
-            --border-glow: rgba(255, 120, 30, 0.22);
+            --bg-card: rgba(22, 17, 13, 0.85);
+            --border-glow: rgba(255, 120, 30, 0.25);
             --primary: #FF6600;
             --primary-bright: #FF8533;
             --gold: #FFB703;
             --primary-grad: linear-gradient(135deg, #FF4500 0%, #FF7700 50%, #FFB703 100%);
-            --choco-grad: linear-gradient(135deg, #3d2114 0%, #1e120c 100%);
             --text-main: #FFFFFF;
             --text-soft: #D9CFC7;
             --text-muted: #96887D;
-            --shadow-glow: 0 16px 40px -10px rgba(255, 85, 0, 0.35);
+            --shadow-glow: 0 16px 40px -10px rgba(255, 85, 0, 0.45);
             --shadow-card: 0 24px 50px -20px rgba(0, 0, 0, 0.85);
-            --radius-xl: 30px;
-            --radius-lg: 22px;
-            --radius-md: 16px;
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
             --maxw: 1200px;
         }
@@ -47,27 +45,18 @@
         img{ display:block; max-width:100%; }
         a{ text-decoration:none; color:inherit; }
 
-        /* ============ NEON AURORA GLOW BACKGROUND ============ */
+        /* ============ BACKGROUND GLOW ============ */
         .liquid{ position:fixed; inset:0; z-index:-2; overflow:hidden; pointer-events:none; }
-        .blob{
-            position:absolute; border-radius:50%;
-            filter:blur(130px); opacity:0.38;
-            animation:drift 22s var(--ease) infinite alternate;
-        }
+        .blob{ position:absolute; border-radius:50%; filter:blur(130px); opacity:0.38; animation:drift 22s var(--ease) infinite alternate; }
         .blob-1{ width:50vw; height:50vw; top:-10vw; left:-10vw; background:radial-gradient(circle, #FF4500, transparent 70%); }
-        .blob-2{ width:45vw; height:45vw; top:35vh; right:-10vw; background:radial-gradient(circle, #D9480F, transparent 70%); animation-duration:26s; animation-delay:-5s; }
-        .blob-3{ width:40vw; height:40vw; bottom:-10vw; left:25vw; background:radial-gradient(circle, #FF922B, transparent 70%); animation-duration:30s; animation-delay:-10s; }
+        .blob-2{ width:45vw; height:45vw; top:35vh; right:-10vw; background:radial-gradient(circle, #D9480F, transparent 70%); animation-duration:26s; }
+        .blob-3{ width:40vw; height:40vw; bottom:-10vw; left:25vw; background:radial-gradient(circle, #FF922B, transparent 70%); animation-duration:30s; }
         @keyframes drift{
             0%   { transform:translate3d(0,0,0) scale(1); }
             50%  { transform:translate3d(4vw,-5vh,0) scale(1.15); }
             100% { transform:translate3d(-4vw,5vh,0) scale(0.9); }
         }
-        .grain{
-            position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:0.18;
-            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-        }
 
-        /* ============ CONTAINER & GLASS EFFECT ============ */
         .container{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px; }
         section{ padding:105px 0; position:relative; }
 
@@ -77,65 +66,35 @@
             backdrop-filter:blur(24px) saturate(180%);
             border:1px solid var(--border-glow);
             box-shadow:var(--shadow-card);
-            transition:transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+            transition:transform 0.4s var(--ease), border-color 0.4s var(--ease);
         }
-        .glass:hover{
-            border-color:rgba(255, 120, 30, 0.45);
-        }
+        .glass:hover{ border-color:rgba(255, 120, 30, 0.5); }
 
         .eyebrow{
             display:inline-flex; align-items:center; gap:9px;
             font-size:0.75rem; font-weight:800; letter-spacing:0.18em; text-transform:uppercase;
-            color:var(--gold);
-            background:rgba(255, 183, 3, 0.12);
+            color:var(--gold); background:rgba(255, 183, 3, 0.12);
             border:1px solid rgba(255, 183, 3, 0.28);
             padding:7px 18px; border-radius:999px; margin-bottom:16px;
         }
-        .eyebrow .dot{
-            width:7px; height:7px; border-radius:50%; background:var(--gold);
-            box-shadow:0 0 10px var(--gold);
-        }
 
         .section-head{ text-align:center; max-width:700px; margin:0 auto 60px; }
-        .section-head h2{
-            font-size:clamp(2.2rem, 4.4vw, 3.2rem); font-weight:900; letter-spacing:-0.035em;
-            line-height:1.15; margin:10px 0 14px;
-        }
+        .section-head h2{ font-size:clamp(2.2rem, 4.4vw, 3.2rem); font-weight:900; letter-spacing:-0.035em; line-height:1.15; margin:10px 0 14px; }
         .section-head p{ color:var(--text-soft); font-size:1.05rem; }
-        .grad{
-            background:var(--primary-grad);
-            -webkit-background-clip:text; background-clip:text; color:transparent;
-        }
+        .grad{ background:var(--primary-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
         /* ============ BUTTONS ============ */
         .btn{
             position:relative; overflow:hidden; display:inline-flex; align-items:center; justify-content:center; gap:10px;
-            padding:15px 32px; border-radius:999px; border:none;
+            padding:14px 28px; border-radius:999px; border:none;
             font-family:inherit; font-size:0.96rem; font-weight:800; cursor:pointer;
             transition:all 0.35s var(--ease);
         }
-        .btn-primary{
-            background:var(--primary-grad);
-            color:#fff;
-            box-shadow:var(--shadow-glow);
-        }
-        .btn-primary:hover{
-            transform:translateY(-3px) scale(1.03);
-            box-shadow:0 20px 45px -8px rgba(255, 85, 0, 0.6);
-        }
-        .btn-ghost{
-            background:rgba(255,255,255,0.06); color:#fff;
-            border:1px solid rgba(255,255,255,0.18);
-        }
+        .btn-primary{ background:var(--primary-grad); color:#fff; box-shadow:var(--shadow-glow); }
+        .btn-primary:hover{ transform:translateY(-3px) scale(1.03); box-shadow:0 20px 45px -8px rgba(255, 85, 0, 0.6); }
+        .btn-ghost{ background:rgba(255,255,255,0.06); color:#fff; border:1px solid rgba(255,255,255,0.18); }
         .btn-ghost:hover{ background:rgba(255,255,255,0.14); transform:translateY(-3px); }
         .btn-block{ width:100%; }
-
-        /* Progress Bar */
-        .progress{
-            position:fixed; top:0; left:0; height:3px; width:0; z-index:2000;
-            background:var(--primary-grad);
-            box-shadow:0 0 14px var(--primary);
-        }
 
         /* ============ NAVBAR ============ */
         .nav-wrap{ position:fixed; top:0; left:0; right:0; z-index:1000; padding:18px 0; transition:0.35s; }
@@ -143,53 +102,29 @@
         .nav{
             display:flex; align-items:center; justify-content:space-between;
             padding:10px 14px 10px 22px; border-radius:999px;
-            background:rgba(18, 13, 10, 0.82);
-            -webkit-backdrop-filter:blur(24px) saturate(180%);
-            backdrop-filter:blur(24px) saturate(180%);
+            background:rgba(18, 13, 10, 0.85);
+            -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px);
             border:1px solid rgba(255, 255, 255, 0.12);
-            box-shadow:0 18px 40px -18px rgba(0,0,0,0.9);
         }
         .logo{ display:flex; align-items:center; gap:12px; }
-        .logo-img{
-            width:44px; height:44px; border-radius:14px; object-fit:cover;
-            border:2px solid var(--primary);
-            box-shadow:0 0 16px rgba(255, 102, 0, 0.4);
-        }
-        .logo-text{ font-size:1.15rem; font-weight:900; letter-spacing:-0.03em; line-height:1; }
+        .logo-img{ width:44px; height:44px; border-radius:14px; object-fit:cover; border:2px solid var(--primary); }
+        .logo-text{ font-size:1.15rem; font-weight:900; line-height:1; }
         .logo-text em{ font-style:normal; color:var(--primary-bright); }
         .logo-text span{ display:block; font-size:0.62rem; font-weight:700; letter-spacing:0.25em; color:var(--text-muted); text-transform:uppercase; margin-top:4px; }
 
         .nav-links{ display:flex; align-items:center; list-style:none; gap:6px; }
-        .nav-links a{
-            padding:8px 18px; border-radius:999px; font-size:0.9rem; font-weight:700;
-            color:var(--text-soft); transition:0.3s;
-        }
-        .nav-links a:hover, .nav-links a.active{
-            color:#fff;
-            background:rgba(255, 102, 0, 0.2);
-            box-shadow:inset 0 0 12px rgba(255, 102, 0, 0.25);
-        }
-        .nav-toggle{
-            display:none; width:42px; height:42px; border-radius:50%; border:1px solid var(--border-glow);
-            background:#1a1410; cursor:pointer; align-items:center; justify-content:center;
-            font-size:1.1rem; color:#fff;
-        }
+        .nav-links a{ padding:8px 18px; border-radius:999px; font-size:0.9rem; font-weight:700; color:var(--text-soft); transition:0.3s; }
+        .nav-links a:hover, .nav-links a.active{ color:#fff; background:rgba(255, 102, 0, 0.2); }
+        .nav-toggle{ display:none; width:42px; height:42px; border-radius:50%; border:1px solid var(--border-glow); background:#1a1410; cursor:pointer; align-items:center; justify-content:center; color:#fff; }
 
         /* ============ HERO SECTION ============ */
         .hero{ padding:175px 0 85px; }
         .hero-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center; }
-        .hero h1{
-            font-size:clamp(2.6rem, 5.3vw, 4.3rem); font-weight:900; letter-spacing:-0.045em; line-height:1.06;
-            margin:14px 0 20px;
-        }
+        .hero h1{ font-size:clamp(2.6rem, 5.3vw, 4.3rem); font-weight:900; letter-spacing:-0.045em; line-height:1.06; margin:14px 0 20px; }
         .hero p.lead{ font-size:1.12rem; color:var(--text-soft); max-width:530px; }
         .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-top:34px; }
-
-        .hero-stats{
-            display:flex; flex-wrap:wrap; gap:36px; list-style:none;
-            margin-top:44px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08);
-        }
-        .hero-stats b{ display:block; font-size:1.7rem; font-weight:900; letter-spacing:-0.03em; color:var(--gold); }
+        .hero-stats{ display:flex; flex-wrap:wrap; gap:36px; list-style:none; margin-top:44px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); }
+        .hero-stats b{ display:block; font-size:1.7rem; font-weight:900; color:var(--gold); }
         .hero-stats span{ font-size:0.82rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; }
 
         .hero-visual{ position:relative; }
@@ -198,9 +133,7 @@
             border:2px solid rgba(255, 120, 30, 0.35);
             background:linear-gradient(145deg, rgba(35,25,20,0.8), rgba(15,10,8,0.9));
             box-shadow:0 30px 80px -20px rgba(255, 85, 0, 0.35);
-            transition:transform 0.5s var(--ease);
         }
-        .hero-card:hover{ transform:translateY(-8px) scale(1.02); }
         .hero-card img{ width:100%; height:clamp(320px, 42vw, 480px); object-fit:contain; border-radius:22px; background:#120c08; }
 
         .float-chip{
@@ -210,86 +143,61 @@
             color:#fff; box-shadow:0 16px 36px -10px rgba(0,0,0,0.8);
             animation:floaty 6s ease-in-out infinite;
         }
-        .float-chip i{ color:var(--primary-bright); font-size:1.1rem; }
+        .float-chip i{ color:var(--primary-bright); }
         .chip-1{ left:-20px; top:40px; }
         .chip-2{ right:-20px; top:20px; animation-delay:-1.5s; }
         .chip-3{ left:-20px; bottom:80px; animation-delay:-3s; }
         .chip-4{ right:-20px; bottom:30px; animation-delay:-4.5s; }
         @keyframes floaty{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-12px); } }
 
-        /* ============ ABOUT US (STORY CHOCOJAR & SITI ANIS ALEYA) ============ */
+        /* ============ ABOUT US ============ */
         #about{ background:linear-gradient(180deg, transparent, rgba(255, 85, 0, 0.05), transparent); }
         .about-wrap{
             border-radius:var(--radius-xl); padding:56px 44px;
             background:linear-gradient(145deg, rgba(28, 20, 15, 0.9), rgba(16, 11, 8, 0.95));
             border:1px solid var(--border-glow);
-            box-shadow:var(--shadow-card);
         }
         .about-grid{ display:grid; grid-template-columns:1.2fr 0.8fr; gap:48px; align-items:center; }
-        
         .chocojar-highlight-box{
-            background:rgba(255, 102, 0, 0.07);
-            border-left:4px solid var(--primary-bright);
+            background:rgba(255, 102, 0, 0.08); border-left:4px solid var(--primary-bright);
             padding:20px 24px; border-radius:0 18px 18px 0; margin:22px 0;
         }
         .chocojar-highlight-box h4{ font-size:1.15rem; color:var(--gold); font-weight:800; margin-bottom:8px; }
-        .chocojar-highlight-box p{ color:var(--text-soft); font-size:0.96rem; margin:0; line-height:1.65; }
+        .chocojar-highlight-box p{ color:var(--text-soft); font-size:0.96rem; margin:0; }
+        .about-text h3{ font-size:2.2rem; font-weight:900; margin-bottom:18px; line-height:1.2; }
+        .about-text p{ color:var(--text-soft); font-size:1.02rem; margin-bottom:16px; }
 
-        .about-text h3{ font-size:2.2rem; font-weight:900; letter-spacing:-0.03em; margin-bottom:18px; line-height:1.2; }
-        .about-text p{ color:var(--text-soft); font-size:1.02rem; margin-bottom:16px; line-height:1.75; }
-
-        /* KAD PROFIL SITI ANIS ALEYA */
         .founder-card{
             background:linear-gradient(145deg, #1f1610, #130d09);
-            border:2px solid rgba(255, 140, 0, 0.35);
-            border-radius:28px; padding:28px;
+            border:2px solid rgba(255, 140, 0, 0.35); border-radius:28px; padding:28px;
             text-align:center; position:relative; overflow:hidden;
-            box-shadow:0 25px 60px -20px rgba(255, 85, 0, 0.25);
-        }
-        .founder-card::before{
-            content:''; position:absolute; top:-30%; left:50%; transform:translateX(-50%);
-            width:250px; height:250px; border-radius:50%;
-            background:radial-gradient(circle, rgba(255, 102, 0, 0.25), transparent 70%);
-            pointer-events:none;
         }
         .founder-img-wrap{
             width:190px; height:230px; margin:0 auto 20px;
-            border-radius:22px; overflow:hidden;
-            border:3px solid var(--primary-bright);
+            border-radius:22px; overflow:hidden; border:3px solid var(--primary-bright);
             box-shadow:0 12px 30px -8px rgba(255, 102, 0, 0.5);
-            position:relative;
         }
-        .founder-img-wrap img{
-            width:100%; height:100%; object-fit:cover; object-position:top center;
-            transition:transform 0.5s var(--ease);
-        }
-        .founder-card:hover .founder-img-wrap img{ transform:scale(1.05); }
-
+        .founder-img-wrap img{ width:100%; height:100%; object-fit:cover; object-position:top center; }
         .founder-badge{
             display:inline-block; font-size:0.75rem; font-weight:800; letter-spacing:0.14em;
             text-transform:uppercase; color:#fff; background:var(--primary-grad);
             padding:5px 16px; border-radius:999px; margin-bottom:10px;
-            box-shadow:0 6px 16px -4px var(--primary);
         }
-        .founder-name{ font-size:1.55rem; font-weight:900; color:#fff; letter-spacing:-0.02em; }
+        .founder-name{ font-size:1.55rem; font-weight:900; color:#fff; }
         .founder-role{ font-size:0.92rem; color:var(--gold); font-weight:700; margin-bottom:14px; }
-        .founder-quote{
-            font-size:0.92rem; color:var(--text-soft); font-style:italic;
-            line-height:1.6; border-top:1px solid rgba(255,255,255,0.08); padding-top:14px;
-        }
+        .founder-quote{ font-size:0.92rem; color:var(--text-soft); font-style:italic; border-top:1px solid rgba(255,255,255,0.08); padding-top:14px; }
 
         /* ============ PRODUCTS ============ */
-        .grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:30px; }
+        .grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:30px; }
         .card{
-            border-radius:var(--radius-lg); padding:20px; text-align:center;
+            border-radius:var(--radius-lg); padding:22px; text-align:center;
             display:flex; flex-direction:column; position:relative;
         }
-        .card:hover{ transform:translateY(-10px); }
+        .card:hover{ transform:translateY(-8px); }
         .card-tag{
             position:absolute; top:28px; right:28px; z-index:2;
-            background:var(--primary-grad); color:#fff;
-            font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em;
-            padding:5px 14px; border-radius:999px; box-shadow:0 6px 14px -4px var(--primary);
+            background:var(--primary-grad); color:#fff; font-size:0.72rem; font-weight:800;
+            padding:5px 14px; border-radius:999px;
         }
         .card-media{
             position:relative; overflow:hidden; border-radius:var(--radius-md);
@@ -297,10 +205,9 @@
             border:1px solid rgba(255,255,255,0.08);
         }
         .card-media img{ width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease); }
-        .card-slider .card-media img{ object-fit:contain; background:#16100c; }
+        .card-slider .card-media img{ object-fit:contain; }
         .card:hover .card-media img{ transform:scale(1.06); }
-
-        .card h3{ font-size:1.3rem; font-weight:800; letter-spacing:-0.02em; margin:18px 0 6px; color:#fff; }
+        .card h3{ font-size:1.3rem; font-weight:800; margin:18px 0 6px; color:#fff; }
         .card .desc{ font-size:0.88rem; color:var(--text-soft); margin-bottom:14px; }
         .price{
             display:inline-flex; align-items:center; align-self:center;
@@ -308,7 +215,7 @@
             background:rgba(255, 183, 3, 0.12); border:1px solid rgba(255, 183, 3, 0.28);
             padding:6px 20px; border-radius:999px; margin-bottom:18px;
         }
-        .card .btn{ margin-top:auto; }
+        .card-actions{ display:flex; flex-direction:column; gap:10px; margin-top:auto; }
 
         /* Slider Controls */
         .slider-btn{
@@ -316,61 +223,148 @@
             width:38px; height:38px; border-radius:50%; z-index:10; cursor:pointer;
             background:rgba(20,15,12,0.85); color:#fff; border:1px solid rgba(255,255,255,0.2);
             display:flex; align-items:center; justify-content:center; font-weight:800;
-            box-shadow:0 8px 18px -4px rgba(0,0,0,0.6); transition:0.3s;
         }
-        .slider-btn:hover{ background:var(--primary); transform:translateY(-50%) scale(1.1); }
-        .slider-btn.prev{ left:10px; }
-        .slider-btn.next{ right:10px; }
+        .slider-btn.prev{ left:10px; } .slider-btn.next{ right:10px; }
         .slider-dots{ display:flex; justify-content:center; gap:6px; margin-top:14px; }
         .slider-dots i{ width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.2); transition:0.3s; }
         .slider-dots i.on{ background:var(--primary-bright); width:20px; border-radius:999px; }
 
+        /* ============ MODAL KUSTOM CHOCOJAR ============ */
+        .modal-overlay{
+            position:fixed; inset:0; z-index:3000;
+            background:rgba(0, 0, 0, 0.85); backdrop-filter:blur(10px);
+            display:none; place-items:center; padding:20px;
+        }
+        .modal-overlay.open{ display:grid; }
+        .modal-box{
+            background:#16100c; border:2px solid var(--primary-bright);
+            border-radius:28px; width:100%; max-width:580px; max-height:90vh;
+            overflow-y:auto; padding:32px; box-shadow:0 25px 60px rgba(0,0,0,0.9);
+            position:relative;
+        }
+        .modal-close{
+            position:absolute; top:20px; right:20px; width:36px; height:36px; border-radius:50%;
+            background:rgba(255,255,255,0.1); border:none; color:#fff; font-size:1.1rem;
+            cursor:pointer; display:grid; place-items:center;
+        }
+        .modal-box h3{ font-size:1.6rem; font-weight:900; margin-bottom:6px; }
+        .modal-box p.sub{ color:var(--text-soft); font-size:0.92rem; margin-bottom:24px; }
+        
+        .opt-title{ font-size:0.9rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+        .pill-group{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
+        .pill-opt{
+            background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+            padding:14px; border-radius:16px; cursor:pointer; text-align:center;
+            font-weight:700; font-size:0.94rem; transition:0.25s; user-select:none;
+        }
+        .pill-opt:hover{ border-color:var(--primary); }
+        .pill-opt.active{
+            background:rgba(255, 102, 0, 0.18); border-color:var(--primary);
+            color:#fff; box-shadow:0 0 16px rgba(255, 102, 0, 0.3);
+        }
+
+        /* Topping checklist */
+        .toppings-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:26px; }
+        .topping-item{
+            display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.1); padding:10px 12px; border-radius:12px;
+            cursor:pointer; font-size:0.86rem; font-weight:600; transition:0.2s;
+        }
+        .topping-item input{ accent-color:var(--primary); width:16px; height:16px; cursor:pointer; }
+        .topping-item:hover{ background:rgba(255,255,255,0.1); }
+        .topping-item.selected{ border-color:var(--primary); background:rgba(255, 102, 0, 0.15); color:#fff; }
+
+        /* Qty selector */
+        .qty-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; padding:16px; background:rgba(255,255,255,0.04); border-radius:16px; }
+        .qty-controls{ display:flex; align-items:center; gap:12px; }
+        .qty-btn{
+            width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.12);
+            border:none; color:#fff; font-size:1.1rem; cursor:pointer; display:grid; place-items:center;
+        }
+        .qty-val{ font-size:1.2rem; font-weight:800; min-width:30px; text-align:center; }
+
+        /* ============ FLOATING CART BUTTON & DRAWER ============ */
+        .cart-float-btn{
+            position:fixed; bottom:28px; right:28px; z-index:2500;
+            background:var(--primary-grad); color:#fff; border:none;
+            padding:16px 26px; border-radius:999px; font-weight:800; font-size:1.05rem;
+            display:flex; align-items:center; gap:12px; cursor:pointer;
+            box-shadow:0 15px 35px -5px rgba(255, 85, 0, 0.6);
+            transition:transform 0.3s var(--ease);
+        }
+        .cart-float-btn:hover{ transform:scale(1.06); }
+        .cart-badge{
+            background:#fff; color:var(--primary); font-size:0.82rem; font-weight:900;
+            width:24px; height:24px; border-radius:50%; display:grid; place-items:center;
+        }
+
+        /* Cart Drawer (Sisi Kanan) */
+        .cart-drawer-overlay{
+            position:fixed; inset:0; z-index:3500; background:rgba(0,0,0,0.7);
+            backdrop-filter:blur(6px); display:none; justify-content:flex-end;
+        }
+        .cart-drawer-overlay.open{ display:flex; }
+        .cart-drawer{
+            width:100%; max-width:440px; height:100%; background:#140e0b;
+            border-left:2px solid var(--border-glow); display:flex; flex-direction:column;
+            padding:32px 24px; box-shadow:-20px 0 50px rgba(0,0,0,0.8);
+            animation:slideLeft 0.35s var(--ease);
+        }
+        @keyframes slideLeft{ from{ transform:translateX(100%); } to{ transform:translateX(0); } }
+        .cart-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.1); }
+        .cart-head h3{ font-size:1.5rem; font-weight:900; display:flex; align-items:center; gap:10px; }
+        
+        .cart-items{ flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:16px; margin-bottom:20px; }
+        .cart-empty{ text-align:center; color:var(--text-muted); margin:auto 0; }
+        .cart-empty i{ font-size:3rem; margin-bottom:12px; opacity:0.3; }
+
+        .cart-item{
+            background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+            border-radius:18px; padding:16px; display:flex; flex-direction:column; gap:8px;
+        }
+        .cart-item-top{ display:flex; justify-content:space-between; align-items:flex-start; }
+        .cart-item-name{ font-weight:800; font-size:1rem; color:#fff; }
+        .cart-item-desc{ font-size:0.8rem; color:var(--gold); }
+        .cart-item-del{ background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:0.95rem; }
+        .cart-item-del:hover{ color:#ff4d4f; }
+        .cart-item-bottom{ display:flex; justify-content:space-between; align-items:center; margin-top:6px; }
+        .cart-item-price{ font-weight:900; font-size:1.05rem; color:var(--primary-bright); }
+
+        .cart-footer{ border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; }
+        .cart-total-row{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+        .cart-total-row span{ font-size:1rem; color:var(--text-soft); }
+        .cart-total-row b{ font-size:1.6rem; font-weight:900; color:var(--gold); }
+
+        .cart-customer-field{ margin-bottom:16px; }
+        .cart-customer-field input{
+            width:100%; padding:12px 16px; border-radius:14px; background:rgba(255,255,255,0.06);
+            border:1px solid rgba(255,255,255,0.12); color:#fff; font-family:inherit;
+        }
+
         /* ============ SERVICES ============ */
         .service-card{
             border-radius:var(--radius-xl); padding:44px;
-            display:grid; grid-template-columns:auto 1fr auto; gap:36px; align-items:center;
-            margin-bottom:36px;
+            display:grid; grid-template-columns:auto 1fr auto; gap:36px; align-items:center; margin-bottom:36px;
         }
         .service-icon{
             width:100px; height:100px; border-radius:30px; display:grid; place-items:center;
-            background:var(--primary-grad); color:#fff; font-size:2.4rem;
-            box-shadow:var(--shadow-glow);
+            background:var(--primary-grad); color:#fff; font-size:2.4rem; box-shadow:var(--shadow-glow);
         }
-        .service-body h3{ font-size:clamp(1.6rem, 2.8vw, 2.2rem); font-weight:900; letter-spacing:-0.03em; margin-bottom:10px; }
+        .service-body h3{ font-size:clamp(1.6rem, 2.8vw, 2.2rem); font-weight:900; margin-bottom:10px; }
         .service-body p{ color:var(--text-soft); max-width:580px; }
         .chips{ display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 24px; list-style:none; }
-        .chips li{
-            font-size:0.84rem; font-weight:800; padding:8px 16px; border-radius:999px;
-            background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff;
-        }
-        .service-img{
-            width:190px; height:190px; object-fit:cover; border-radius:24px;
-            border:2px solid var(--border-glow); box-shadow:var(--shadow-card);
-        }
+        .chips li{ font-size:0.84rem; font-weight:800; padding:8px 16px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; }
+        .service-img{ width:190px; height:190px; object-fit:cover; border-radius:24px; border:2px solid var(--border-glow); }
 
-        /* Price Grid */
         .price-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:26px; }
-        .price-card{
-            border-radius:var(--radius-lg); padding:28px; display:flex; flex-direction:column;
-            position:relative; overflow:hidden;
-        }
-        .price-card::before{
-            content:''; position:absolute; top:0; left:0; right:0; height:4px;
-            background:var(--primary-grad);
-        }
+        .price-card{ border-radius:var(--radius-lg); padding:28px; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+        .price-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--primary-grad); }
         .price-head{ display:flex; align-items:center; gap:14px; margin-bottom:18px; }
-        .price-icon{
-            width:52px; height:52px; border-radius:16px; display:grid; place-items:center;
-            font-size:1.25rem; color:#fff; background:var(--primary-grad);
-        }
+        .price-icon{ width:52px; height:52px; border-radius:16px; display:grid; place-items:center; font-size:1.25rem; color:#fff; background:var(--primary-grad); }
         .price-head h3{ font-size:1.15rem; font-weight:900; }
         .price-head .sub{ font-size:0.75rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; }
         .price-list{ list-style:none; margin-bottom:24px; }
-        .price-list li{
-            display:flex; justify-content:space-between; padding:12px 0;
-            border-bottom:1px dashed rgba(255,255,255,0.1); font-size:0.92rem;
-            color:var(--text-soft);
-        }
+        .price-list li{ display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px dashed rgba(255,255,255,0.1); font-size:0.92rem; color:var(--text-soft); }
         .price-list li:last-child{ border-bottom:none; }
         .price-list .amount{ font-weight:900; color:var(--gold); }
 
@@ -389,17 +383,11 @@
         .field label{ display:block; font-size:0.75rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
         .field input, .field textarea{
             width:100%; padding:14px 18px; border-radius:16px; font-family:inherit; font-size:0.98rem;
-            background:rgba(12, 9, 7, 0.7); border:1px solid rgba(255,255,255,0.12); color:#fff; transition:0.3s;
-        }
-        .field input:focus, .field textarea:focus{
-            outline:none; border-color:var(--primary-bright); box-shadow:0 0 0 4px rgba(255, 102, 0, 0.25);
+            background:rgba(12, 9, 7, 0.7); border:1px solid rgba(255,255,255,0.12); color:#fff;
         }
 
         /* ============ FOOTER ============ */
-        footer{
-            position:relative; color:#fff; padding:80px 0 30px;
-            background:#050403; border-top:1px solid rgba(255,255,255,0.08);
-        }
+        footer{ position:relative; color:#fff; padding:80px 0 30px; background:#050403; border-top:1px solid rgba(255,255,255,0.08); }
         .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:50px; margin-bottom:44px; }
         .footer-brand{ display:flex; align-items:center; gap:14px; margin-bottom:18px; }
         .footer-logo{ width:44px; height:44px; border-radius:14px; border:2px solid var(--primary); }
@@ -415,34 +403,18 @@
         .contact-list i{ color:var(--primary-bright); margin-top:4px; }
         .footer-bottom{ border-top:1px solid rgba(255,255,255,0.08); padding-top:24px; text-align:center; color:var(--text-muted); font-size:0.84rem; }
 
-        /* ============ REVEAL ANIMATION ============ */
-        .reveal{ opacity:0; transform:translateY(30px); transition:opacity 0.8s var(--ease), transform 0.8s var(--ease); }
-        .reveal.in{ opacity:1; transform:none; }
-        .reveal.d1{ transition-delay:0.15s; }
-        .reveal.d2{ transition-delay:0.25s; }
-
-        /* ============ RESPONSIVE ============ */
         @media (max-width:960px){
             .hero-grid, .about-grid, .feedback-wrap, .footer-grid{ grid-template-columns:1fr; gap:40px; }
             .hero{ padding:130px 0 60px; text-align:center; }
             .hero p.lead{ margin:0 auto; }
-            .hero-actions{ justify-content:center; }
-            .hero-stats{ justify-content:center; }
+            .hero-actions, .hero-stats, .chips{ justify-content:center; }
             .service-card{ grid-template-columns:1fr; text-align:center; justify-items:center; }
-            .service-body p{ margin:0 auto; }
-            .chips{ justify-content:center; }
         }
         @media (max-width:860px){
             .nav-toggle{ display:flex; }
-            .nav{ border-radius:24px; flex-wrap:wrap; }
-            .nav-links{
-                flex-direction:column; width:100%; max-height:0; overflow:hidden; opacity:0;
-                transition:0.4s var(--ease);
-            }
+            .nav-links{ flex-direction:column; width:100%; max-height:0; overflow:hidden; opacity:0; transition:0.4s; }
             .nav-links.open{ max-height:360px; opacity:1; margin-top:14px; padding-top:12px; border-top:1px solid var(--border-glow); }
             .nav-links a{ padding:12px; width:100%; text-align:center; }
-            .chip-1{ left:5px; top:30px; } .chip-2{ right:5px; top:10px; }
-            .chip-3{ left:5px; bottom:50px; } .chip-4{ right:5px; bottom:20px; }
         }
     </style>
 </head>
@@ -453,8 +425,6 @@
         <span class="blob blob-2"></span>
         <span class="blob blob-3"></span>
     </div>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="progress" id="progress"></div>
 
     <!-- NAVBAR -->
     <div class="nav-wrap" id="navWrap">
@@ -465,7 +435,7 @@
                     <span class="logo-text">BIZKY<em>SHOP</em><span>Food &amp; Printing</span></span>
                 </a>
 
-                <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+                <button class="nav-toggle" id="navToggle" aria-label="Buka menu">
                     <i class="fas fa-bars"></i>
                 </button>
 
@@ -480,27 +450,27 @@
         </div>
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section id="home" class="hero">
         <div class="container hero-grid">
-            <div class="hero-copy reveal">
-                <div class="eyebrow"><span class="dot"></span> TVET Mara Besut • Dibuka Setiap Hari</div>
+            <div class="hero-copy">
+                <div class="eyebrow"><i class="fas fa-bolt"></i> TVET Mara Besut • Dibuka Setiap Hari</div>
                 <h1>Rasa coklat melimpah, ramen pedas, <span class="grad">cetak sepantas kilat.</span></h1>
-                <p class="lead">Selamat datang ke BIZKY Shop! Nikmati Chocojar Premium buatan segar, hidangan pedas berapi, dan urus cetakan assignment anda terus dalam kawasan kampus.</p>
+                <p class="lead">Pilih makanan lazat kegemaran anda, kustom Chocojar dengan topping viral, dan masukkan ke dalam troli untuk pesanan pantas!</p>
 
                 <div class="hero-actions">
-                    <a href="#products" class="btn btn-primary">Order Makanan Sekarang <i class="fas fa-arrow-down"></i></a>
+                    <a href="#products" class="btn btn-primary">Pilih Menu &amp; Masuk Troli <i class="fas fa-cart-shopping"></i></a>
                     <a href="#about" class="btn btn-ghost">Kenali Kami</a>
                 </div>
 
                 <ul class="hero-stats">
-                    <li><b>Chocojar</b><span>Viral Leleh</span></li>
+                    <li><b>Chocojar</b><span>12 Topping Viral</span></li>
                     <li><b>RM 6</b><span>Harga Bermula</span></li>
-                    <li><b>100%</b><span>Halal &amp; Puas Hati</span></li>
+                    <li><b>100%</b><span>Puas Hati</span></li>
                 </ul>
             </div>
 
-            <div class="hero-visual reveal d1">
+            <div class="hero-visual">
                 <div class="hero-card glass">
                     <img src="poster.jfif" alt="Bizky Poster">
                 </div>
@@ -512,16 +482,16 @@
         </div>
     </section>
 
-    <!-- ABOUT US (Kisah Chocojar & Siti Anis Aleya) -->
+    <!-- ABOUT US -->
     <section id="about">
         <div class="container">
-            <div class="section-head reveal">
+            <div class="section-head">
                 <span class="eyebrow"><i class="fas fa-crown"></i> Cerita Kami</span>
                 <h2>Kisah Manis Di Sebalik <span class="grad">BIZKY</span></h2>
                 <p>Bagaimana sebuah balang Chocojar mengubah rutin harian warga TVET Mara Besut.</p>
             </div>
 
-            <div class="about-wrap reveal d1">
+            <div class="about-wrap">
                 <div class="about-grid">
                     <div class="about-text">
                         <h3>Dari Balang Kecil, Menjadi Kegilaan Ramai!</h3>
@@ -529,23 +499,22 @@
                         
                         <div class="chocojar-highlight-box">
                             <h4><i class="fas fa-jar"></i> Fenomena Chocojar BIZKY</h4>
-                            <p>Kami formulasikan resepi coklat premium leleh khas yang disalut ke atas biskut mini rangup berkualiti. Sekali suap, kerangupan dan limpahan coklat pekatnya buat ramai student tak boleh berhenti mengunyah waktu study mahupun lepak!</p>
+                            <p>Kami formulasikan resepi coklat premium khas (Chocolate &amp; White Chocolate) bersama 12 aneka topping mewah seperti Kinder Bueno, Lotus Biscoff, Daim dan Nutella B-ready.</p>
                         </div>
 
-                        <p>Kini, BIZKY bukan sahaja sinonim dengan chocojar viral, malah berkembang menjadi hab pilihan nombor satu warga kampus dengan hidangan ramen panas, crispy chicken chop, serta servis cetakan dokumen dan assignment pantas.</p>
+                        <p>Kini, BIZKY berkembang menjadi hab sehenti pelajar TVET Mara Besut untuk hidangan ramen berapi, crispy chicken chop, serta servis cetak tugasan pantas.</p>
                     </div>
 
                     <!-- KAD PROFIL SITI ANIS ALEYA -->
                     <div class="founder-card">
                         <div class="founder-img-wrap">
-                            <!-- Letakkan gambar anda dengan nama 'anis.jpg' di repositori GitHub -->
                             <img src="anis.jpg" alt="Siti Anis Aleya - Pengurus Operasi BIZKY">
                         </div>
                         <span class="founder-badge">PENGURUS OPERASI</span>
                         <h4 class="founder-name">Siti Anis Aleya</h4>
                         <div class="founder-role">Kepimpinan Operasi &amp; Kawalan Kualiti BIZKY</div>
                         <p class="founder-quote">
-                            "Misi saya adalah memastikan setiap balang Chocojar yang sampai ke tangan anda diadun sempurna dengan limpahan coklat pekat segar, di samping memastikan servis pesanan anda sentiasa pantas dan mesra."
+                            "Misi saya adalah memastikan setiap balang Chocojar diadun segar bersama limpahan topping pilihan anda, dan pesanan dihantar sepantas kilat!"
                         </p>
                     </div>
                 </div>
@@ -556,56 +525,62 @@
     <!-- PRODUCTS SECTION -->
     <section id="products">
         <div class="container">
-            <div class="section-head reveal">
+            <div class="section-head">
                 <span class="eyebrow"><i class="fas fa-utensils"></i> Menu Pilihan</span>
-                <h2>Produk <span class="grad">Paling Laris</span></h2>
-                <p>Tekan butang WhatsApp untuk membuat pesanan terus kepada kami sekarang.</p>
+                <h2>Pilih &amp; <span class="grad">Tambah Ke Troli</span></h2>
+                <p>Pilih hidangan, kustom perisa &amp; topping, lalu semak dalam troli anda.</p>
             </div>
 
             <div class="grid">
-                <!-- Chocojar (Link ke 01133512092) -->
-                <article class="card glass reveal">
+                <!-- CHOCOJAR DENGAN BUTANG KUSTOM -->
+                <article class="card glass">
                     <span class="card-tag">Signature Item</span>
                     <div class="card-media">
                         <img src="chocojar-baru.jfif" alt="Chocojar Bizky">
                     </div>
                     <h3>Chocojar Premium</h3>
-                    <p class="desc">Coklat leleh pekat melimpah dengan biskut rangup padu</p>
-                    <div class="price">RM 10.00</div>
-                    <a href="https://wa.me/601133512092?text=hi,nak%20beli%20chocojar" class="btn btn-primary btn-block" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp"></i> Beli Chocojar (WhatsApp)
-                    </a>
+                    <p class="desc">Pilihan White Choc / Coklat + 12 Topping Mewah</p>
+                    <div class="price">RM 10.00 - RM 15.00</div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary btn-block" onclick="openChocojarModal()">
+                            <i class="fas fa-sliders"></i> Kustom &amp; Tambah Troli
+                        </button>
+                    </div>
                 </article>
 
-                <!-- Ramen Slider -->
-                <article class="card card-slider glass reveal d1">
+                <!-- RAMEN SAMYANG SLIDER -->
+                <article class="card card-slider glass">
                     <span class="card-tag">Pedas Berapi</span>
                     <div class="card-media">
-                        <button class="slider-btn prev" onclick="prevRamen()" aria-label="Perisa sebelumnya">&#10094;</button>
+                        <button class="slider-btn prev" onclick="prevRamen()">&#10094;</button>
                         <img id="ramenImg" src="ramen samyang.jpg" alt="Ramen Samyang" style="transform:scale(1.16);">
-                        <button class="slider-btn next" onclick="nextRamen()" aria-label="Perisa seterusnya">&#10095;</button>
+                        <button class="slider-btn next" onclick="nextRamen()">&#10095;</button>
                     </div>
                     <h3 id="ramenTitle">Ramen Samyang</h3>
                     <p class="desc">10 pilihan perisa berapi kegemaran anda</p>
                     <div class="price">RM 6.00</div>
-                    <a id="ramenBtn" href="https://wa.me/60197945644?text=Hi,%20saya%20nak%20order%20Ramen%20Samyang" class="btn btn-primary btn-block" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp"></i> Order Ramen
-                    </a>
-                    <div class="slider-dots" id="ramenDots" aria-hidden="true"></div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary btn-block" onclick="addCurrentRamenToCart()">
+                            <i class="fas fa-cart-plus"></i> Tambah Ke Troli
+                        </button>
+                    </div>
+                    <div class="slider-dots" id="ramenDots"></div>
                 </article>
 
-                <!-- Chicken Chop -->
-                <article class="card glass reveal d2">
+                <!-- CHICKEN CHOP -->
+                <article class="card glass">
                     <span class="card-tag">Rangup Juicy</span>
                     <div class="card-media">
                         <img src="chicken-chop.jpg" alt="Chicken Chop">
                     </div>
                     <h3>Chicken Chop Crispy</h3>
-                    <p class="desc">Ayam rangup di luar, lembut di dalam bersama sos lada hitam</p>
+                    <p class="desc">Ayam rangup di luar, empuk di dalam bersama sos blackpepper</p>
                     <div class="price">RM 6.00</div>
-                    <a href="https://wa.me/60197945644?text=Nak%20Chicken%20Chop" class="btn btn-primary btn-block" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp"></i> Order Chicken Chop
-                    </a>
+                    <div class="card-actions">
+                        <button class="btn btn-primary btn-block" onclick="addToCart('Chicken Chop Crispy', 6.00, 'Original Blackpepper Sauce')">
+                            <i class="fas fa-cart-plus"></i> Tambah Ke Troli
+                        </button>
+                    </div>
                 </article>
             </div>
         </div>
@@ -614,29 +589,26 @@
     <!-- SERVICES (PRINTING) -->
     <section id="services">
         <div class="container">
-            <div class="section-head reveal">
+            <div class="section-head">
                 <span class="eyebrow"><i class="fas fa-print"></i> TVET Print Hub</span>
                 <h2>Servis <span class="grad">Printing Assignment</span></h2>
                 <p>Urusan dokumen &amp; tugasan jadi mudah. Hantar fail, kami siapkan segera!</p>
             </div>
 
-            <div class="service-card glass reveal d1">
+            <div class="service-card glass">
                 <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
-
                 <div class="service-body">
                     <h3>Pusat Cetakan &amp; Dokumentasi Pelajar</h3>
-                    <p>Tak perlu risau deadline! Hantarkan sahaja dokumen tugasan anda melalui WhatsApp. Kertas bersih, cetakan tajam, dan siap dibinding kemas untuk markah terbaik anda.</p>
+                    <p>Hantar dokumen via WhatsApp untuk cetakan tajam, kemas, dan siap dibinding untuk penghantaran markah cemerlang anda.</p>
                     <ul class="chips">
                         <li><i class="fas fa-check" style="color:var(--gold);"></i> Hitam Putih</li>
                         <li><i class="fas fa-check" style="color:var(--gold);"></i> Full Color</li>
                         <li><i class="fas fa-check" style="color:var(--gold);"></i> Comb / Tape Binding</li>
-                        <li><i class="fas fa-check" style="color:var(--gold);"></i> Harga Pelajar</li>
                     </ul>
-                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp"></i> Hantar Dokumen Printing
+                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Bahagian Cetak
                     </a>
                 </div>
-
                 <figure class="service-media">
                     <img src="printing.jpeg" alt="Printing Assignment" class="service-img" loading="lazy">
                 </figure>
@@ -644,85 +616,41 @@
 
             <!-- Price Grid -->
             <div class="price-grid">
-                <article class="price-card glass reveal">
+                <article class="price-card glass">
                     <div class="price-head">
                         <span class="price-icon"><i class="fas fa-file-lines"></i></span>
-                        <div>
-                            <h3>Hitam Putih</h3>
-                            <span class="sub">Black &amp; White</span>
-                        </div>
+                        <div><h3>Hitam Putih</h3><span class="sub">Black &amp; White</span></div>
                     </div>
                     <ul class="price-list">
-                        <li>
-                            <span>Hitam Putih (1 muka)</span>
-                            <span class="amount">RM0.30 / helai</span>
-                        </li>
-                        <li>
-                            <span>Hitam Putih (depan belakang)</span>
-                            <span class="amount">RM0.40 / helai</span>
-                        </li>
+                        <li><span>1 Muka surat</span><span class="amount">RM0.30 / helai</span></li>
+                        <li><span>Depan &amp; Belakang</span><span class="amount">RM0.40 / helai</span></li>
                     </ul>
-                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary btn-block" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp"></i> Tempah Sekarang
-                    </a>
+                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20order%20print%20Hitam%20Putih" class="btn btn-primary btn-block" target="_blank">Order Cetak</a>
                 </article>
 
-                <article class="price-card glass reveal d1">
+                <article class="price-card glass">
                     <div class="price-head">
                         <span class="price-icon"><i class="fas fa-palette"></i></span>
-                        <div>
-                            <h3>Berwarna</h3>
-                            <span class="sub">Full Color</span>
-                        </div>
+                        <div><h3>Berwarna</h3><span class="sub">Full Color</span></div>
                     </div>
                     <ul class="price-list">
-                        <li>
-                            <span>Berwarna (1 muka)</span>
-                            <span class="amount">RM0.50 / helai</span>
-                        </li>
-                        <li>
-                            <span>Berwarna (depan belakang)</span>
-                            <span class="amount">RM0.60 / helai</span>
-                        </li>
-                        <li>
-                            <span>Slide / Gambar Penuh</span>
-                            <span class="amount">RM0.50 / helai</span>
-                        </li>
+                        <li><span>1 Muka surat</span><span class="amount">RM0.50 / helai</span></li>
+                        <li><span>Depan &amp; Belakang</span><span class="amount">RM0.60 / helai</span></li>
                     </ul>
-                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary btn-block" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp"></i> Tempah Sekarang
-                    </a>
+                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20order%20print%20Warna" class="btn btn-primary btn-block" target="_blank">Order Cetak</a>
                 </article>
 
-                <article class="price-card glass reveal d2">
+                <article class="price-card glass">
                     <div class="price-head">
                         <span class="price-icon"><i class="fas fa-book-open"></i></span>
-                        <div>
-                            <h3>Binding &amp; Cover</h3>
-                            <span class="sub">Kemasan Kemas</span>
-                        </div>
+                        <div><h3>Binding &amp; Cover</h3><span class="sub">Kemasan Kemas</span></div>
                     </div>
                     <ul class="price-list">
-                        <li>
-                            <span>Binder Rod A4</span>
-                            <span class="amount">RM0.50 / unit</span>
-                        </li>
-                        <li>
-                            <span>Plastic Cover A4</span>
-                            <span class="amount">RM0.50 / unit</span>
-                        </li>
+                        <li><span>Binder Rod A4</span><span class="amount">RM0.50 / unit</span></li>
+                        <li><span>Plastic Cover A4</span><span class="amount">RM0.50 / unit</span></li>
                     </ul>
-                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary btn-block" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp"></i> Tempah Sekarang
-                    </a>
+                    <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20order%20Binding" class="btn btn-primary btn-block" target="_blank">Order Binding</a>
                 </article>
-            </div>
-
-            <div class="service-cta glass reveal">
-                <p class="tagline">Mudah, Cepat, Jimat. Hubungi <a href="tel:01157089433" style="color:var(--gold);">011-57089433</a> sekarang!</p>
-                <a href="https://wa.me/601157089433?text=Hi,%20saya%20nak%20buat%20tempahan%20printing%20dan%20binding" class="btn btn-primary" target="_blank" rel="noopener">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Bahagian Print
-                </a>
             </div>
         </div>
     </section>
@@ -730,23 +658,23 @@
     <!-- FEEDBACK -->
     <section id="feedback">
         <div class="container feedback-wrap">
-            <div class="feedback-copy reveal">
+            <div class="feedback-copy">
                 <span class="eyebrow"><i class="fas fa-comment-dots"></i> Suara Anda</span>
                 <h2>Kongsi <span class="grad">Pengalaman Anda</span></h2>
-                <p>Pendapat anda membantu kami meningkatkan mutu rasa makanan dan kelancaran servis kami di TVET Mara Besut.</p>
+                <p>Pendapat anda membantu kami meningkatkan kualiti rasa makanan dan kelancaran servis kami di TVET Mara Besut.</p>
             </div>
 
-            <div class="form-card glass reveal d1">
+            <div class="form-card glass">
                 <div class="field">
                     <label for="fbNama">Nama Anda</label>
-                    <input type="text" id="fbNama" placeholder="Nama anda / Samaran" autocomplete="name">
+                    <input type="text" id="fbNama" placeholder="Nama anda / Samaran">
                 </div>
                 <div class="field">
                     <label for="fbMesej">Komen / Maklum Balas</label>
                     <textarea id="fbMesej" rows="4" placeholder="Ceritakan pengalaman anda..."></textarea>
                 </div>
                 <button id="fbBtn" class="btn btn-primary btn-block">
-                    <i class="fas fa-paper-plane"></i> Hantar Feedback Sekarang
+                    <i class="fas fa-paper-plane"></i> Hantar Maklum Balas
                 </button>
             </div>
         </div>
@@ -761,19 +689,20 @@
                         <img src="logo.jpeg" alt="BIZKY Shop Logo" class="footer-logo">
                         <h3>BIZKY SHOP</h3>
                     </div>
-                    <p>Pilihan kegemaran warga TVET Mara Besut untuk hidangan Chocojar melimpah, crispy chicken chop, aneka ramen pedas, serta perkhidmatan percetakan assignment pantas.</p>
+                    <p>Pilihan utama warga TVET Mara Besut untuk hidangan Chocojar melimpah, crispy chicken chop, aneka ramen pedas, serta servis cetak tugasan pantas.</p>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/share/14oFTY2jjny/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/bizky_shop?utm_source=qr&stkn=eXAxZ3kxeG11YzZ2" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/60197945644" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/14oFTY2jjny/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/bizky_shop?utm_source=qr&stkn=eXAxZ3kxeG11YzZ2" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/601133512092" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
 
                 <div class="footer-col">
-                    <h4 style="font-size:1.15rem; font-weight:800; margin-bottom:20px; color:#fff;">Maklumat Hubungan</h4>
+                    <h4 style="font-size:1.15rem; font-weight:800; margin-bottom:20px;">Maklumat Hubungan</h4>
                     <ul class="contact-list">
                         <li><i class="fas fa-map-marker-alt"></i> TVET Mara Besut, Terengganu</li>
-                        <li><i class="fas fa-phone"></i> 019-794 5644 (Pesanan Makanan)</li>
+                        <li><i class="fas fa-phone"></i> 011-3351 2092 (Chocojar Order)</li>
+                        <li><i class="fas fa-phone"></i> 019-794 5644 (Makanan Lain)</li>
                         <li><i class="fas fa-print"></i> 011-5708 9433 (Printing &amp; Binding)</li>
                         <li><i class="fas fa-envelope"></i> byhaq66@gmail.com</li>
                     </ul>
@@ -783,26 +712,119 @@
         </div>
     </footer>
 
-    <!-- SKRIP FIREBASE KEKAL -->
+    <!-- ============ MODAL KUSTOM CHOCOJAR ============ -->
+    <div class="modal-overlay" id="chocojarModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeChocojarModal()"><i class="fas fa-times"></i></button>
+            <h3>Kustom Chocojar Anda</h3>
+            <p class="sub">Pilih perisa asas, saiz jar dan topping kegemaran anda!</p>
+
+            <!-- 1. Perisa -->
+            <div class="opt-title"><i class="fas fa-droplet"></i> 1. Pilih Perisa Coklat</div>
+            <div class="pill-group" id="flavorGroup">
+                <div class="pill-opt active" onclick="selectFlavor(this, 'Chocolate (Coklat Asli)')">🍫 Chocolate</div>
+                <div class="pill-opt" onclick="selectFlavor(this, 'White Chocolate')">🥛 White Chocolate</div>
+            </div>
+
+            <!-- 2. Saiz -->
+            <div class="opt-title"><i class="fas fa-jar"></i> 2. Pilih Saiz Balang</div>
+            <div class="pill-group" id="sizeGroup">
+                <div class="pill-opt active" onclick="selectSize(this, '300 ml', 10.00)">300 ml (RM 10.00)</div>
+                <div class="pill-opt" onclick="selectSize(this, '500 ml', 15.00)">500 ml (RM 15.00)</div>
+            </div>
+
+            <!-- 3. Topping -->
+            <div class="opt-title"><i class="fas fa-candy-cane"></i> 3. Pilih Topping (Boleh Pilih Banyak)</div>
+            <div class="toppings-grid" id="toppingsList">
+                <!-- 12 Topping Yang Diminta -->
+                <label class="topping-item"><input type="checkbox" value="Kinder Bueno"> Kinder Bueno</label>
+                <label class="topping-item"><input type="checkbox" value="Toblerone"> Toblerone</label>
+                <label class="topping-item"><input type="checkbox" value="Nutella B-ready"> Nutella B-ready</label>
+                <label class="topping-item"><input type="checkbox" value="Daim"> Daim</label>
+                <label class="topping-item"><input type="checkbox" value="Hershey’s Kisses"> Hershey’s Kisses</label>
+                <label class="topping-item"><input type="checkbox" value="Lotus Biscoff"> Lotus Biscoff</label>
+                <label class="topping-item"><input type="checkbox" value="Oreo"> Oreo</label>
+                <label class="topping-item"><input type="checkbox" value="Cream-O"> Cream-O</label>
+                <label class="topping-item"><input type="checkbox" value="Cadbury"> Cadbury</label>
+                <label class="topping-item"><input type="checkbox" value="Milo"> Milo</label>
+                <label class="topping-item"><input type="checkbox" value="Hershey’s"> Hershey’s</label>
+                <label class="topping-item"><input type="checkbox" value="KitKat"> KitKat</label>
+            </div>
+
+            <!-- Qty -->
+            <div class="qty-row">
+                <span style="font-weight:800; font-size:1rem;">Kuantiti Balang:</span>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeChocoQty(-1)"><i class="fas fa-minus"></i></button>
+                    <span class="qty-val" id="chocoQty">1</span>
+                    <button class="qty-btn" onclick="changeChocoQty(1)"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" onclick="confirmChocojarToCart()">
+                <i class="fas fa-cart-plus"></i> Masukkan Ke Troli (<span id="chocoModalPrice">RM 10.00</span>)
+            </button>
+        </div>
+    </div>
+
+    <!-- ============ FLOATING CART BUTTON ============ -->
+    <button class="cart-float-btn" id="cartFloatBtn" onclick="toggleCartDrawer()">
+        <i class="fas fa-shopping-bag"></i>
+        <span>Troli Pesanan</span>
+        <span class="cart-badge" id="cartBadgeCount">0</span>
+    </button>
+
+    <!-- ============ CART DRAWER (SLIDE-OVER) ============ -->
+    <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="closeCartOnOutside(event)">
+        <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-head">
+                <h3><i class="fas fa-shopping-cart" style="color:var(--primary);"></i> Troli Saya</h3>
+                <button class="modal-close" onclick="toggleCartDrawer()" style="position:static;"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="cart-items" id="cartItemsContainer">
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-basket"></i>
+                    <p>Troli anda masih kosong.<br>Jom pilih Chocojar atau Ramen!</p>
+                </div>
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-customer-field">
+                    <input type="text" id="custName" placeholder="Nama Anda / Bilik / Lokasi TVET">
+                </div>
+
+                <div class="cart-total-row">
+                    <span>Jumlah Keseluruhan:</span>
+                    <b id="cartTotalDisplay">RM 0.00</b>
+                </div>
+
+                <button class="btn btn-primary btn-block" onclick="checkoutWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Hantar Pesanan Ke WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="app.js"></script>
 
-    <!-- INTERACTION SCRIPTS -->
+    <!-- LOGIK JAVASCRIPT: SLIDER RAMEN & CART SYSTEM -->
     <script>
-        /* ===== Ramen slider ===== */
+        /* ===== SLIDER RAMEN ===== */
         const ramenList = [
-            { name: "Ramen Samyang",     img: "ramen samyang.jpg", scale: "1.16" },
-            { name: "Original Hot",      img: "https://cdn.buldak.com/images/1784783544088-my-pouch-noodles-product-buldak-ramen-original_20260723141222.png?w=512&q=80&fit=contain", scale: "1.0" },
-            { name: "2X Spicy",          img: "2x Spicy.jpg", scale: "1.0" },
-            { name: "Stew Type",         img: "Stew.jpg", scale: "1.0" },
-            { name: "Cheese",            img: "Cheese.jpg", scale: "1.0" },
-            { name: "Carbonara",         img: "https://cdn.buldak.com/images/1779976381501-my-pouch-noodles-product-buldak-ramen-carbonara_20260528215259.webp", scale: "1.0" },
-            { name: "Jjajang",           img: "jjajang.jpg", scale: "1.0" },
-            { name: "Cream Carbonara",   img: "Cream Carbonara.jpg", scale: "1.0" },
-            { name: "Quattro Cheese",    img: "Quattro Cheese.jpg", scale: "1.0" },
-            { name: "Rosé",              img: "https://cdn.buldak.com/images_dev/1758256486240-22_Buldak%20Ramen%20Rose_140g.webp?w=512&q=80&fit=contain", scale: "1.0" }
+            { name: "Ramen Samyang", img: "ramen samyang.jpg", scale: "1.16" },
+            { name: "Original Hot", img: "https://cdn.buldak.com/images/1784783544088-my-pouch-noodles-product-buldak-ramen-original_20260723141222.png?w=512&q=80&fit=contain", scale: "1.0" },
+            { name: "2X Spicy", img: "2x Spicy.jpg", scale: "1.0" },
+            { name: "Stew Type", img: "Stew.jpg", scale: "1.0" },
+            { name: "Cheese", img: "Cheese.jpg", scale: "1.0" },
+            { name: "Carbonara", img: "https://cdn.buldak.com/images/1779976381501-my-pouch-noodles-product-buldak-ramen-carbonara_20260528215259.webp", scale: "1.0" },
+            { name: "Jjajang", img: "jjajang.jpg", scale: "1.0" },
+            { name: "Cream Carbonara", img: "Cream Carbonara.jpg", scale: "1.0" },
+            { name: "Quattro Cheese", img: "Quattro Cheese.jpg", scale: "1.0" },
+            { name: "Rosé", img: "https://cdn.buldak.com/images_dev/1758256486240-22_Buldak%20Ramen%20Rose_140g.webp?w=512&q=80&fit=contain", scale: "1.0" }
         ];
 
-        let currentIndex = 0;
+        let currentRamenIdx = 0;
         const dotsBox = document.getElementById('ramenDots');
         ramenList.forEach((_, i) => {
             const d = document.createElement('i');
@@ -811,7 +833,7 @@
         });
 
         function updateRamen() {
-            const item = ramenList[currentIndex];
+            const item = ramenList[currentRamenIdx];
             const imgEl = document.getElementById('ramenImg');
             imgEl.style.opacity = '0';
             setTimeout(() => {
@@ -819,59 +841,193 @@
                 imgEl.style.transform = `scale(${item.scale})`;
                 imgEl.style.opacity = '1';
             }, 140);
-
             document.getElementById('ramenTitle').innerText = item.name;
-            document.getElementById('ramenBtn').href = "https://wa.me/60197945644?text=" + encodeURIComponent("Hi, saya nak order " + item.name);
-            [...dotsBox.children].forEach((d, i) => d.classList.toggle('on', i === currentIndex));
+            [...dotsBox.children].forEach((d, i) => d.classList.toggle('on', i === currentRamenIdx));
         }
-        function nextRamen(){ currentIndex = (currentIndex + 1) % ramenList.length; updateRamen(); }
-        function prevRamen(){ currentIndex = (currentIndex - 1 + ramenList.length) % ramenList.length; updateRamen(); }
+        function nextRamen(){ currentRamenIdx = (currentRamenIdx + 1) % ramenList.length; updateRamen(); }
+        function prevRamen(){ currentRamenIdx = (currentRamenIdx - 1 + ramenList.length) % ramenList.length; updateRamen(); }
 
-        /* ===== Nav: scrolled state + mobile toggle + scrollspy ===== */
-        const navWrap = document.getElementById('navWrap');
-        const navLinks = document.getElementById('navLinks');
-        const navToggle = document.getElementById('navToggle');
-        const progress = document.getElementById('progress');
+        function addCurrentRamenToCart() {
+            const item = ramenList[currentRamenIdx];
+            addToCart("Ramen Buldak (" + item.name + ")", 6.00, "Perisa: " + item.name);
+        }
 
-        navToggle.addEventListener('click', () => {
-            const open = navLinks.classList.toggle('open');
-            navToggle.setAttribute('aria-expanded', open);
-            navToggle.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        /* ===== MODAL CHOCOJAR SELECTION ===== */
+        let selectedFlavor = "Chocolate (Coklat Asli)";
+        let selectedSize = "300 ml";
+        let selectedBasePrice = 10.00;
+        let chocoQuantity = 1;
+
+        function openChocojarModal() {
+            document.getElementById('chocojarModal').classList.add('open');
+            chocoQuantity = 1;
+            document.getElementById('chocoQty').innerText = '1';
+            updateModalPrice();
+        }
+        function closeChocojarModal() {
+            document.getElementById('chocojarModal').classList.remove('open');
+        }
+
+        function selectFlavor(el, flavor) {
+            document.querySelectorAll('#flavorGroup .pill-opt').forEach(p => p.classList.remove('active'));
+            el.classList.add('active');
+            selectedFlavor = flavor;
+        }
+
+        function selectSize(el, size, price) {
+            document.querySelectorAll('#sizeGroup .pill-opt').forEach(p => p.classList.remove('active'));
+            el.classList.add('active');
+            selectedSize = size;
+            selectedBasePrice = price;
+            updateModalPrice();
+        }
+
+        function changeChocoQty(delta) {
+            chocoQuantity = Math.max(1, chocoQuantity + delta);
+            document.getElementById('chocoQty').innerText = chocoQuantity;
+            updateModalPrice();
+        }
+
+        function updateModalPrice() {
+            const total = selectedBasePrice * chocoQuantity;
+            document.getElementById('chocoModalPrice').innerText = 'RM ' + total.toFixed(2);
+        }
+
+        // Topping checkbox visual highlight
+        document.querySelectorAll('#toppingsList input').forEach(input => {
+            input.addEventListener('change', function() {
+                this.parentElement.classList.toggle('selected', this.checked);
+            });
         });
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            navToggle.setAttribute('aria-expanded', 'false');
-            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }));
 
-        const onScroll = () => {
-            const y = window.scrollY;
-            navWrap.classList.toggle('scrolled', y > 20);
-            const h = document.documentElement.scrollHeight - window.innerHeight;
-            progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
+        function confirmChocojarToCart() {
+            const toppings = [];
+            document.querySelectorAll('#toppingsList input:checked').forEach(cb => toppings.push(cb.value));
+            const toppingText = toppings.length > 0 ? "Topping: " + toppings.join(', ') : "Tanpa Topping Tambahan";
+            const fullDesc = `Saiz: ${selectedSize} | Perisa: ${selectedFlavor} | ${toppingText}`;
 
-        const sections = [...document.querySelectorAll('section[id]')];
-        const spy = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    navLinks.querySelectorAll('a').forEach(a => {
-                        a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
-                    });
-                }
+            addToCart("Chocojar Premium (" + selectedSize + ")", selectedBasePrice, fullDesc, chocoQuantity, true);
+            closeChocojarModal();
+            toggleCartDrawer();
+        }
+
+        /* ===== CART SYSTEM ENGINE ===== */
+        let cart = [];
+
+        function addToCart(name, price, details = '', qty = 1, isChocojar = false) {
+            const existingIdx = cart.findIndex(item => item.name === name && item.details === details);
+            if (existingIdx > -1) {
+                cart[existingIdx].qty += qty;
+            } else {
+                cart.push({ name, price, details, qty, isChocojar });
+            }
+            renderCart();
+        }
+
+        function updateItemQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItemsContainer');
+            const totalEl = document.getElementById('cartTotalDisplay');
+            const badge = document.getElementById('cartBadgeCount');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            badge.innerText = totalCount;
+            totalEl.innerText = 'RM ' + totalPrice.toFixed(2);
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>Troli anda masih kosong.<br>Jom pilih Chocojar atau Ramen!</p>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = cart.map((item, idx) => `
+                <div class="cart-item">
+                    <div class="cart-item-top">
+                        <div>
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-desc">${item.details}</div>
+                        </div>
+                        <button class="cart-item-del" onclick="removeItem(${idx})"><i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="cart-item-bottom">
+                        <div class="qty-controls">
+                            <button class="qty-btn" style="width:28px; height:28px;" onclick="updateItemQty(${idx}, -1)">-</button>
+                            <span class="qty-val" style="font-size:0.95rem;">${item.qty}</span>
+                            <button class="qty-btn" style="width:28px; height:28px;" onclick="updateItemQty(${idx}, 1)">+</button>
+                        </div>
+                        <div class="cart-item-price">RM ${(item.price * item.qty).toFixed(2)}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer() {
+            document.getElementById('cartDrawerOverlay').classList.toggle('open');
+        }
+
+        function closeCartOnOutside(e) {
+            if (e.target.id === 'cartDrawerOverlay') toggleCartDrawer();
+        }
+
+        /* ===== CHECKOUT WHATSAPP DENGAN NOMBOR TEPAT ===== */
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Troli anda masih kosong! Sila pilih item terlebih dahulu.");
+                return;
+            }
+
+            const custName = document.getElementById('custName').value.trim() || 'Pelanggan TVET Mara Besut';
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            let msg = `*PESANAN BIZKY SHOP*\n`;
+            msg += `------------------------------------\n`;
+            msg += `👤 *Nama:* ${custName}\n\n`;
+            msg += `📋 *SENARAI PESANAN:*\n`;
+
+            cart.forEach((item, i) => {
+                msg += `${i + 1}. *${item.name}* (x${item.qty})\n`;
+                if (item.details) msg += `   └ _${item.details}_\n`;
+                msg += `   └ Subtotal: RM ${(item.price * item.qty).toFixed(2)}\n`;
             });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-        sections.forEach(s => spy.observe(s));
 
-        /* ===== Reveal on scroll ===== */
-        const revealer = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('in'); revealer.unobserve(e.target); }
-            });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(el => revealer.observe(el));
+            msg += `------------------------------------\n`;
+            msg += `💰 *JUMLAH BAYARAN: RM ${totalPrice.toFixed(2)}*\n\n`;
+            msg += `Mohon sahkan pesanan saya ya! Terima kasih.`;
+
+            // Jika ada chocojar dalam cart, hubungi nombor chocojar: 01133512092
+            const hasChocojar = cart.some(item => item.isChocojar);
+            const phone = hasChocojar ? "601133512092" : "60197945644";
+
+            const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        /* ===== NAV MOBILE & SCROLL ===== */
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('navWrap').classList.toggle('scrolled', window.scrollY > 20);
+        });
     </script>
 </body>
 </html>
