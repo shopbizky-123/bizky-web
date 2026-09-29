@@ -341,6 +341,61 @@
             border: 1px solid rgba(255, 183, 3, 0.3);
         }
 
+        /* ============ BAHAGIAN TESTIMONI & FEEDBACK CHOCOJAR ============ */
+        .feedback-showcase-wrap{
+            margin-bottom: 60px;
+        }
+        .feedback-gallery-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+        }
+        .feedback-img-card{
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--border-glow);
+            background: #140e0b;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+        }
+        .feedback-img-card:hover{
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--primary-bright);
+            box-shadow: 0 16px 36px -8px rgba(255, 85, 0, 0.45);
+        }
+        .feedback-img-card img{
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s var(--ease);
+        }
+        .feedback-img-card:hover img{
+            transform: scale(1.05);
+        }
+        .feedback-card-overlay{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 14px 16px;
+            background: linear-gradient(180deg, transparent, rgba(11, 8, 6, 0.94) 75%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feedback-card-overlay span{
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--gold);
+            background: rgba(0,0,0,0.7);
+            border: 1px solid rgba(255, 183, 3, 0.35);
+            padding: 5px 14px;
+            border-radius: 999px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
         /* ============ MODAL KUSTOM CHOCOJAR ============ */
         .modal-overlay{
             position:fixed; inset:0; z-index:4000;
@@ -673,14 +728,14 @@
             </div>
 
             <div class="grid">
-                <!-- CHOCOJAR DENGAN SLIDER 18 GAMBAR (c1.jpg - c18.jpg) -->
+                <!-- CHOCOJAR (GAMBAR chocojar.jpg DI DEPAN SEKALI) -->
                 <article class="card card-slider glass">
                     <span class="card-tag">Chocojar Premium</span>
                     <div class="card-media">
                         <button type="button" class="slider-btn prev" onclick="prevChoco()" aria-label="Gambar sebelumnya">&#10094;</button>
-                        <img id="chocoCardImg" src="c1.jpg" alt="Chocojar Mamylicious BIZKY">
+                        <img id="chocoCardImg" src="chocojar.jpg" alt="Chocojar Mamylicious BIZKY">
                         <button type="button" class="slider-btn next" onclick="nextChoco()" aria-label="Gambar seterusnya">&#10095;</button>
-                        <div class="img-counter-badge" id="chocoImgCounter">1 / 18</div>
+                        <div class="img-counter-badge" id="chocoImgCounter">1 / 19</div>
                     </div>
                     <h3>Chocojar Premium</h3>
                     <p class="desc">Pilihan White Choc / Chocolate + 12 Topping Mewah</p>
@@ -742,24 +797,25 @@
                 </div>
 
                 <div class="choco-gallery-scroll" id="chocoGalleryScroll">
-                    <div class="choco-thumb-card" onclick="pickChocoImg(0)"><img src="c1.jpg" alt="Chocojar 1"><span class="choco-thumb-badge">#1</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(1)"><img src="c2.jpg" alt="Chocojar 2"><span class="choco-thumb-badge">#2</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(2)"><img src="c3.jpg" alt="Chocojar 3"><span class="choco-thumb-badge">#3</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(3)"><img src="c4.jpg" alt="Chocojar 4"><span class="choco-thumb-badge">#4</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(4)"><img src="c5.jpg" alt="Chocojar 5"><span class="choco-thumb-badge">#5</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(5)"><img src="c6.jpg" alt="Chocojar 6"><span class="choco-thumb-badge">#6</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(6)"><img src="c7.jpg" alt="Chocojar 7"><span class="choco-thumb-badge">#7</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(7)"><img src="c8.jpg" alt="Chocojar 8"><span class="choco-thumb-badge">#8</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(8)"><img src="c9.jpg" alt="Chocojar 9"><span class="choco-thumb-badge">#9</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(9)"><img src="c10.jpg" alt="Chocojar 10"><span class="choco-thumb-badge">#10</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(10)"><img src="c11.jpg" alt="Chocojar 11"><span class="choco-thumb-badge">#11</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(11)"><img src="c12.jpg" alt="Chocojar 12"><span class="choco-thumb-badge">#12</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(12)"><img src="c13.jpg" alt="Chocojar 13"><span class="choco-thumb-badge">#13</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(13)"><img src="c14.jpg" alt="Chocojar 14"><span class="choco-thumb-badge">#14</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(14)"><img src="c15.jpg" alt="Chocojar 15"><span class="choco-thumb-badge">#15</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(15)"><img src="c16.jpg" alt="Chocojar 16"><span class="choco-thumb-badge">#16</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(16)"><img src="c17.jpg" alt="Chocojar 17"><span class="choco-thumb-badge">#17</span></div>
-                    <div class="choco-thumb-card" onclick="pickChocoImg(17)"><img src="c18.jpg" alt="Chocojar 18"><span class="choco-thumb-badge">#18</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(0)"><img src="chocojar.jpg" alt="Chocojar Utama"><span class="choco-thumb-badge">Utama</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(1)"><img src="c1.jpg" alt="Chocojar 1"><span class="choco-thumb-badge">#1</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(2)"><img src="c2.jpg" alt="Chocojar 2"><span class="choco-thumb-badge">#2</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(3)"><img src="c3.jpg" alt="Chocojar 3"><span class="choco-thumb-badge">#3</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(4)"><img src="c4.jpg" alt="Chocojar 4"><span class="choco-thumb-badge">#4</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(5)"><img src="c5.jpg" alt="Chocojar 5"><span class="choco-thumb-badge">#5</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(6)"><img src="c6.jpg" alt="Chocojar 6"><span class="choco-thumb-badge">#6</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(7)"><img src="c7.jpg" alt="Chocojar 7"><span class="choco-thumb-badge">#7</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(8)"><img src="c8.jpg" alt="Chocojar 8"><span class="choco-thumb-badge">#8</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(9)"><img src="c9.jpg" alt="Chocojar 9"><span class="choco-thumb-badge">#9</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(10)"><img src="c10.jpg" alt="Chocojar 10"><span class="choco-thumb-badge">#10</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(11)"><img src="c11.jpg" alt="Chocojar 11"><span class="choco-thumb-badge">#11</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(12)"><img src="c12.jpg" alt="Chocojar 12"><span class="choco-thumb-badge">#12</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(13)"><img src="c13.jpg" alt="Chocojar 13"><span class="choco-thumb-badge">#13</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(14)"><img src="c14.jpg" alt="Chocojar 14"><span class="choco-thumb-badge">#14</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(15)"><img src="c15.jpg" alt="Chocojar 15"><span class="choco-thumb-badge">#15</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(16)"><img src="c16.jpg" alt="Chocojar 16"><span class="choco-thumb-badge">#16</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(17)"><img src="c17.jpg" alt="Chocojar 17"><span class="choco-thumb-badge">#17</span></div>
+                    <div class="choco-thumb-card" onclick="pickChocoImg(18)"><img src="c18.jpg" alt="Chocojar 18"><span class="choco-thumb-badge">#18</span></div>
                 </div>
             </div>
         </div>
@@ -834,28 +890,69 @@
         </div>
     </section>
 
-    <!-- FEEDBACK -->
+    <!-- FEEDBACK & TESTIMONI -->
     <section id="feedback">
-        <div class="container feedback-wrap">
-            <div class="feedback-copy">
-                <span class="eyebrow"><i class="fas fa-comment-dots"></i> Suara Anda</span>
-                <h2>Kongsi <span class="grad">Pengalaman Anda</span></h2>
-                <p>Pendapat anda membantu kami meningkatkan kualiti rasa makanan dan kelancaran servis kami di TVET Mara Besut.</p>
+        <div class="container">
+            
+            <!-- BAHAGIAN 4 GAMBAR FEEDBACK CHOCOJAR -->
+            <div class="feedback-showcase-wrap">
+                <div class="section-head" style="margin-bottom:34px;">
+                    <span class="eyebrow"><i class="fas fa-heart" style="color:var(--gold);"></i> Review Pelanggan</span>
+                    <h2>Testimoni <span class="grad">Chocojar Mamylicious</span></h2>
+                    <p>Antara maklum balas &amp; kepuasan rasa daripada pembeli setia kami di TVET Mara Besut.</p>
+                </div>
+
+                <div class="feedback-gallery-grid">
+                    <div class="feedback-img-card glass">
+                        <img src="feedbackc1.jpg" alt="Feedback Chocojar 1" loading="lazy">
+                        <div class="feedback-card-overlay">
+                            <span>⭐⭐⭐⭐⭐ Rangup Meleleh!</span>
+                        </div>
+                    </div>
+                    <div class="feedback-img-card glass">
+                        <img src="feedbackc2.jpg" alt="Feedback Chocojar 2" loading="lazy">
+                        <div class="feedback-card-overlay">
+                            <span>⭐⭐⭐⭐⭐ Coklat Pekat Padu</span>
+                        </div>
+                    </div>
+                    <div class="feedback-img-card glass">
+                        <img src="feedbackc3.jpg" alt="Feedback Chocojar 3" loading="lazy">
+                        <div class="feedback-card-overlay">
+                            <span>⭐⭐⭐⭐⭐ Repeat Order Lagi!</span>
+                        </div>
+                    </div>
+                    <div class="feedback-img-card glass">
+                        <img src="feedbackc4.jpg" alt="Feedback Chocojar 4" loading="lazy">
+                        <div class="feedback-card-overlay">
+                            <span>⭐⭐⭐⭐⭐ 100% Puas Hati</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-card glass">
-                <div class="field">
-                    <label for="fbNama">Nama Anda</label>
-                    <input type="text" id="fbNama" placeholder="Nama anda / Samaran">
+            <!-- BORANG FEEDBACK UMUM -->
+            <div class="feedback-wrap">
+                <div class="feedback-copy">
+                    <span class="eyebrow"><i class="fas fa-comment-dots"></i> Suara Anda</span>
+                    <h2>Kongsi <span class="grad">Pengalaman Anda</span></h2>
+                    <p>Pendapat anda membantu kami meningkatkan kualiti rasa makanan dan kelancaran servis kami di TVET Mara Besut.</p>
                 </div>
-                <div class="field">
-                    <label for="fbMesej">Komen / Maklum Balas</label>
-                    <textarea id="fbMesej" rows="4" placeholder="Ceritakan pengalaman anda..."></textarea>
+
+                <div class="form-card glass">
+                    <div class="field">
+                        <label for="fbNama">Nama Anda</label>
+                        <input type="text" id="fbNama" placeholder="Nama anda / Samaran">
+                    </div>
+                    <div class="field">
+                        <label for="fbMesej">Komen / Maklum Balas</label>
+                        <textarea id="fbMesej" rows="4" placeholder="Ceritakan pengalaman anda..."></textarea>
+                    </div>
+                    <button type="button" id="fbBtn" class="btn btn-primary btn-block">
+                        <i class="fas fa-paper-plane"></i> Hantar Maklum Balas
+                    </button>
                 </div>
-                <button type="button" id="fbBtn" class="btn btn-primary btn-block">
-                    <i class="fas fa-paper-plane"></i> Hantar Maklum Balas
-                </button>
             </div>
+
         </div>
     </section>
 
@@ -941,7 +1038,7 @@
                 <label class="topping-item"><input type="checkbox" value="KitKat"> KitKat</label>
             </div>
 
-            <!-- Kuantiti (Multiplier) -->
+            <!-- Kuantiti -->
             <div class="qty-row">
                 <span style="font-weight:800; font-size:1rem;">Kuantiti:</span>
                 <div class="qty-controls">
@@ -1011,9 +1108,9 @@
 
     <!-- LOGIK JAVASCRIPT LENGKAP -->
     <script>
-        /* ===== SLIDER CHOCOJAR (18 GAMBAR c1.jpg - c18.jpg) ===== */
+        /* ===== SLIDER CHOCOJAR (chocojar.jpg di depan + c1.jpg - c18.jpg) ===== */
         const chocoImgs = [
-            "chocojar.jpg", "c2.jpg", "c3.jpg", "c4.jpg", "c5.jpg", "c6.jpg",
+            "chocojar.jpg", "c1.jpg", "c2.jpg", "c3.jpg", "c4.jpg", "c5.jpg", "c6.jpg",
             "c7.jpg", "c8.jpg", "c9.jpg", "c10.jpg", "c11.jpg", "c12.jpg",
             "c13.jpg", "c14.jpg", "c15.jpg", "c16.jpg", "c17.jpg", "c18.jpg"
         ];
