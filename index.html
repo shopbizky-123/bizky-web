@@ -238,7 +238,7 @@
         .modal-overlay.open{ display:grid; }
         .modal-box{
             background:#16100c; border:2px solid var(--primary-bright);
-            border-radius:28px; width:100%; max-width:580px; max-height:90vh;
+            border-radius:28px; width:100%; max-width:600px; max-height:90vh;
             overflow-y:auto; padding:32px; box-shadow:0 25px 60px rgba(0,0,0,0.9);
             position:relative;
         }
@@ -249,10 +249,10 @@
         }
         .modal-close:hover{ background:var(--primary); }
         .modal-box h3{ font-size:1.6rem; font-weight:900; margin-bottom:6px; }
-        .modal-box p.sub{ color:var(--text-soft); font-size:0.92rem; margin-bottom:24px; }
+        .modal-box p.sub{ color:var(--text-soft); font-size:0.92rem; margin-bottom:20px; }
         
         .opt-title{ font-size:0.9rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
-        .pill-group{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
+        .pill-group{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:22px; }
         
         .pill-btn{
             background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.15);
@@ -268,7 +268,7 @@
         .pill-price-tag{ font-size:1.1rem; font-weight:900; color:var(--gold); }
 
         /* Topping checklist */
-        .toppings-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:26px; }
+        .toppings-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(135px, 1fr)); gap:10px; margin-bottom:22px; }
         .topping-item{
             display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.05);
             border:1px solid rgba(255,255,255,0.1); padding:10px 12px; border-radius:12px;
@@ -276,10 +276,30 @@
         }
         .topping-item input{ accent-color:var(--primary); width:16px; height:16px; cursor:pointer; }
         .topping-item:hover{ background:rgba(255,255,255,0.1); }
-        .topping-item.selected{ border-color:var(--primary); background:rgba(255, 102, 0, 0.2); color:#fff; }
+        .topping-item.selected{ border-color:var(--primary); background:rgba(255, 102, 0, 0.25); color:#fff; }
+
+        /* Packing Mode Selection */
+        .packing-mode-box{
+            background:rgba(255, 102, 0, 0.08); border:1px solid rgba(255, 120, 30, 0.35);
+            border-radius:18px; padding:16px 18px; margin-bottom:22px;
+        }
+        .packing-mode-title{ font-size:0.88rem; font-weight:800; color:var(--gold); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+        .packing-options{ display:flex; flex-direction:column; gap:10px; }
+        .packing-opt-label{
+            display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; font-weight:600;
+            color:var(--text-soft); cursor:pointer; line-height:1.4;
+        }
+        .packing-opt-label input{ accent-color:var(--primary); width:18px; height:18px; margin-top:2px; }
+
+        /* Summary Notice */
+        .summary-notice{
+            background:rgba(255,255,255,0.05); border-radius:12px; padding:12px 16px;
+            font-size:0.88rem; font-weight:700; color:var(--gold); margin-bottom:22px;
+            display:flex; align-items:center; gap:10px;
+        }
 
         /* Qty selector */
-        .qty-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; padding:16px; background:rgba(255,255,255,0.04); border-radius:16px; }
+        .qty-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; padding:14px 18px; background:rgba(255,255,255,0.04); border-radius:16px; }
         .qty-controls{ display:flex; align-items:center; gap:12px; }
         .qty-btn{
             width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.15);
@@ -288,7 +308,7 @@
         .qty-btn:hover{ background:var(--primary); }
         .qty-val{ font-size:1.2rem; font-weight:800; min-width:30px; text-align:center; }
 
-        /* ============ NOTIFIKASI TOAST (POPUP SELESAI ADD TO CART) ============ */
+        /* ============ NOTIFIKASI TOAST ============ */
         .toast-notify{
             position:fixed; bottom:100px; left:50%; transform:translateX(-50%) translateY(40px);
             background:#1f1610; border:2px solid var(--primary-bright); border-radius:999px;
@@ -320,7 +340,7 @@
             width:24px; height:24px; border-radius:50%; display:grid; place-items:center;
         }
 
-        /* Cart Drawer (Sisi Kanan) */
+        /* Cart Drawer */
         .cart-drawer-overlay{
             position:fixed; inset:0; z-index:5000; background:rgba(0,0,0,0.75);
             backdrop-filter:blur(6px); display:none; justify-content:flex-end;
@@ -333,7 +353,7 @@
             animation:slideLeft 0.35s var(--ease);
         }
         @keyframes slideLeft{ from{ transform:translateX(100%); } to{ transform:translateX(0); } }
-        .cart-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.1); }
+        .cart-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.1); }
         .cart-head h3{ font-size:1.45rem; font-weight:900; display:flex; align-items:center; gap:10px; }
         
         .continue-shopping-btn{
@@ -571,7 +591,7 @@
                     <p class="desc">Pilihan White Choc / Chocolate + 12 Topping Mewah</p>
                     <div class="price">RM 7.00 (300ml) / RM 10.00 (500ml)</div>
                     <div class="card-actions">
-                        <button class="btn btn-primary btn-block" onclick="openChocojarModal()">
+                        <button type="button" class="btn btn-primary btn-block" onclick="openChocojarModal()">
                             <i class="fas fa-sliders"></i> Kustom &amp; Tambah Ke Troli
                         </button>
                     </div>
@@ -581,15 +601,15 @@
                 <article class="card card-slider glass">
                     <span class="card-tag">Pedas Berapi</span>
                     <div class="card-media">
-                        <button class="slider-btn prev" onclick="prevRamen()">&#10094;</button>
+                        <button type="button" class="slider-btn prev" onclick="prevRamen()">&#10094;</button>
                         <img id="ramenImg" src="ramen samyang.jpg" alt="Ramen Samyang" style="transform:scale(1.16);">
-                        <button class="slider-btn next" onclick="nextRamen()">&#10095;</button>
+                        <button type="button" class="slider-btn next" onclick="nextRamen()">&#10095;</button>
                     </div>
                     <h3 id="ramenTitle">Ramen Samyang</h3>
                     <p class="desc">10 pilihan perisa berapi kegemaran anda</p>
                     <div class="price">RM 6.00</div>
                     <div class="card-actions">
-                        <button class="btn btn-primary btn-block" onclick="addCurrentRamenToCart()">
+                        <button type="button" class="btn btn-primary btn-block" onclick="addCurrentRamenToCart()">
                             <i class="fas fa-cart-plus"></i> Tambah Ke Troli
                         </button>
                     </div>
@@ -606,7 +626,7 @@
                     <p class="desc">Ayam rangup di luar, empuk di dalam bersama sos blackpepper</p>
                     <div class="price">RM 6.00</div>
                     <div class="card-actions">
-                        <button class="btn btn-primary btn-block" onclick="addToCart('Chicken Chop Crispy', 6.00, 'Sos Blackpepper Original')">
+                        <button type="button" class="btn btn-primary btn-block" onclick="addToCart('Chicken Chop Crispy', 6.00, 'Sos Blackpepper Original')">
                             <i class="fas fa-cart-plus"></i> Tambah Ke Troli
                         </button>
                     </div>
@@ -702,7 +722,7 @@
                     <label for="fbMesej">Komen / Maklum Balas</label>
                     <textarea id="fbMesej" rows="4" placeholder="Ceritakan pengalaman anda..."></textarea>
                 </div>
-                <button id="fbBtn" class="btn btn-primary btn-block">
+                <button type="button" id="fbBtn" class="btn btn-primary btn-block">
                     <i class="fas fa-paper-plane"></i> Hantar Maklum Balas
                 </button>
             </div>
@@ -744,9 +764,9 @@
     <!-- ============ MODAL KUSTOM CHOCOJAR ============ -->
     <div class="modal-overlay" id="chocojarModal">
         <div class="modal-box">
-            <button class="modal-close" onclick="closeChocojarModal()"><i class="fas fa-times"></i></button>
+            <button type="button" class="modal-close" onclick="closeChocojarModal()"><i class="fas fa-times"></i></button>
             <h3>Kustom Chocojar Anda</h3>
-            <p class="sub">Pilih perisa asas, saiz jar dan topping kegemaran anda!</p>
+            <p class="sub">Pilih perisa, saiz, dan topping kegemaran anda!</p>
 
             <!-- 1. Perisa -->
             <div class="opt-title"><i class="fas fa-droplet"></i> 1. Pilih Perisa Coklat</div>
@@ -775,7 +795,6 @@
             <!-- 3. Topping -->
             <div class="opt-title">
                 <span><i class="fas fa-candy-cane"></i> 3. Pilih Topping</span>
-                <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600; text-transform:none;">(Percuma &amp; Boleh Pilih Banyak)</span>
             </div>
             <div class="toppings-grid" id="toppingsList">
                 <label class="topping-item"><input type="checkbox" value="Kinder Bueno"> Kinder Bueno</label>
@@ -792,9 +811,30 @@
                 <label class="topping-item"><input type="checkbox" value="KitKat"> KitKat</label>
             </div>
 
-            <!-- Qty -->
+            <!-- 4. Pilihan Cara Pembungkusan (Packing Mode) -->
+            <div class="packing-mode-box">
+                <div class="packing-mode-title"><i class="fas fa-boxes-stacked"></i> Cara Pembungkusan Balang:</div>
+                <div class="packing-options">
+                    <label class="packing-opt-label">
+                        <input type="radio" name="packingMode" value="separate" checked onchange="updateModalPrice()">
+                        <span><b>1 Balang Bagi Setiap Topping</b> <br><small style="color:var(--text-muted);">(Pilih 3 topping = 3 balang berasingan)</small></span>
+                    </label>
+                    <label class="packing-opt-label">
+                        <input type="radio" name="packingMode" value="mixed" onchange="updateModalPrice()">
+                        <span><b>Campur Semua Topping Dalam 1 Balang Sahaja</b> <br><small style="color:var(--text-muted);">(Semua topping ditabur dalam 1 balang yang sama)</small></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Info Nota Ringkas -->
+            <div class="summary-notice" id="packingSummaryNotice">
+                <i class="fas fa-info-circle"></i>
+                <span id="packingSummaryNote">Pilih topping di atas.</span>
+            </div>
+
+            <!-- Kuantiti (Multiplier) -->
             <div class="qty-row">
-                <span style="font-weight:800; font-size:1rem;">Kuantiti Balang:</span>
+                <span style="font-weight:800; font-size:1rem;">Kuantiti Setiap Set:</span>
                 <div class="qty-controls">
                     <button type="button" class="qty-btn" onclick="changeChocoQty(-1)"><i class="fas fa-minus"></i></button>
                     <span class="qty-val" id="chocoQty">1</span>
@@ -802,8 +842,8 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary btn-block" onclick="confirmChocojarToCart()">
-                <i class="fas fa-cart-plus"></i> Masukkan Ke Troli (<span id="chocoModalPrice">RM 7.00</span>)
+            <button type="button" class="btn btn-primary btn-block" onclick="confirmChocojarToCart()" id="chocoModalBtn">
+                <span id="chocoModalBtnText"><i class="fas fa-cart-plus"></i> Masukkan Ke Troli</span>
             </button>
         </div>
     </div>
@@ -816,7 +856,7 @@
     </div>
 
     <!-- ============ FLOATING CART BUTTON ============ -->
-    <button class="cart-float-btn" id="cartFloatBtn" onclick="toggleCartDrawer()">
+    <button type="button" class="cart-float-btn" id="cartFloatBtn" onclick="toggleCartDrawer()">
         <i class="fas fa-shopping-bag"></i>
         <span>Troli</span>
         <span class="cart-badge" id="cartBadgeCount">0</span>
@@ -827,10 +867,9 @@
         <div class="cart-drawer" id="cartDrawer">
             <div class="cart-head">
                 <h3><i class="fas fa-shopping-cart" style="color:var(--primary);"></i> Troli Pesanan</h3>
-                <button class="modal-close" onclick="toggleCartDrawer()" style="position:static;"><i class="fas fa-times"></i></button>
+                <button type="button" class="modal-close" onclick="toggleCartDrawer()" style="position:static;"><i class="fas fa-times"></i></button>
             </div>
 
-            <!-- Butang Sambung Beli -->
             <button type="button" class="continue-shopping-btn" onclick="toggleCartDrawer()">
                 <i class="fas fa-arrow-left"></i> Sambung Beli Makanan Lain
             </button>
@@ -908,27 +947,28 @@
         /* ===== MODAL CHOCOJAR ===== */
         let selectedFlavor = "Chocolate";
         let selectedSize = "300 ml";
-        let selectedBasePrice = 7.00; // Default mula dengan 300ml (RM 7.00)
+        let selectedBasePrice = 7.00;
         let chocoQuantity = 1;
 
         function openChocojarModal() {
             document.getElementById('chocojarModal').classList.add('open');
-            
-            // Reset pilihan setiap kali buka modal baru
             chocoQuantity = 1;
             document.getElementById('chocoQty').innerText = '1';
             
-            // Set default 300 ml (RM 7.00)
+            // Set semula default saiz 300ml (RM 7.00)
             selectedSize = "300 ml";
             selectedBasePrice = 7.00;
             document.querySelectorAll('#sizeGroup .pill-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('btnSize300').classList.add('active');
 
-            // Kosongkan checklist topping daripada pilihan lama
+            // Reset checklist
             document.querySelectorAll('#toppingsList input').forEach(input => {
                 input.checked = false;
                 input.parentElement.classList.remove('selected');
             });
+
+            // Set radio default kepada "separate" (1 Balang setiap topping)
+            document.querySelector('input[name="packingMode"][value="separate"]').checked = true;
 
             updateModalPrice();
         }
@@ -958,24 +998,65 @@
         }
 
         function updateModalPrice() {
-            const total = selectedBasePrice * chocoQuantity;
-            document.getElementById('chocoModalPrice').innerText = 'RM ' + total.toFixed(2);
+            const checkedBoxes = document.querySelectorAll('#toppingsList input:checked');
+            const checkedCount = checkedBoxes.length;
+            const packingModeEl = document.querySelector('input[name="packingMode"]:checked');
+            const isSeparate = packingModeEl ? packingModeEl.value === 'separate' : true;
+
+            let totalJars = 1;
+            if (isSeparate && checkedCount > 1) {
+                totalJars = checkedCount;
+            }
+
+            const finalCalculatedPrice = selectedBasePrice * totalJars * chocoQuantity;
+            const btnText = document.getElementById('chocoModalBtnText');
+            const noteEl = document.getElementById('packingSummaryNote');
+
+            if (checkedCount === 0) {
+                noteEl.innerText = `1 balang (${selectedSize}) tanpa topping = RM ${selectedBasePrice.toFixed(2)}`;
+                btnText.innerHTML = `<i class="fas fa-cart-plus"></i> Masukkan 1 Balang Ke Troli (RM ${finalCalculatedPrice.toFixed(2)})`;
+            } else if (isSeparate) {
+                if (checkedCount > 1) {
+                    const totalBln = totalJars * chocoQuantity;
+                    noteEl.innerText = `✨ ${checkedCount} topping dipilih = ${checkedCount} balang berasingan (RM ${selectedBasePrice.toFixed(2)} × ${totalBln} balang)`;
+                    btnText.innerHTML = `<i class="fas fa-cart-plus"></i> Masukkan ${totalBln} Balang Ke Troli (RM ${finalCalculatedPrice.toFixed(2)})`;
+                } else {
+                    noteEl.innerText = `✨ 1 balang (${selectedSize}) dengan 1 topping = RM ${selectedBasePrice.toFixed(2)}`;
+                    btnText.innerHTML = `<i class="fas fa-cart-plus"></i> Masukkan 1 Balang Ke Troli (RM ${finalCalculatedPrice.toFixed(2)})`;
+                }
+            } else {
+                noteEl.innerText = `✨ 1 balang (${selectedSize}) dicampur ${checkedCount} topping = RM ${selectedBasePrice.toFixed(2)}`;
+                btnText.innerHTML = `<i class="fas fa-cart-plus"></i> Masukkan 1 Balang (Campur Topping) (RM ${finalCalculatedPrice.toFixed(2)})`;
+            }
         }
 
         // Checklist visual highlight
         document.querySelectorAll('#toppingsList input').forEach(input => {
             input.addEventListener('change', function() {
                 this.parentElement.classList.toggle('selected', this.checked);
+                updateModalPrice();
             });
         });
 
         function confirmChocojarToCart() {
-            const toppings = [];
-            document.querySelectorAll('#toppingsList input:checked').forEach(cb => toppings.push(cb.value));
-            const toppingText = toppings.length > 0 ? "Topping: " + toppings.join(', ') : "Tanpa Topping";
-            const fullDesc = `Saiz: ${selectedSize} | Perisa: ${selectedFlavor} | ${toppingText}`;
+            const checkedBoxes = [...document.querySelectorAll('#toppingsList input:checked')];
+            const isSeparate = document.querySelector('input[name="packingMode"]:checked').value === 'separate';
 
-            addToCart("Chocojar Premium (" + selectedSize + ")", selectedBasePrice, fullDesc, chocoQuantity, true);
+            if (checkedBoxes.length === 0) {
+                // Tiada topping dipilih -> 1 balang
+                addToCart(`Chocojar Premium (${selectedSize})`, selectedBasePrice, `Perisa: ${selectedFlavor} | Original (Tanpa Topping)`, chocoQuantity, true);
+            } else if (isSeparate) {
+                // Setiap topping adalah SATU BALANG BERASINGAN!
+                checkedBoxes.forEach(cb => {
+                    const toppingName = cb.value;
+                    addToCart(`Chocojar Premium (${selectedSize})`, selectedBasePrice, `Perisa: ${selectedFlavor} | Topping: ${toppingName}`, chocoQuantity, true);
+                });
+            } else {
+                // Semua topping campur dalam 1 balang
+                const toppingText = checkedBoxes.map(cb => cb.value).join(', ');
+                addToCart(`Chocojar Premium (${selectedSize})`, selectedBasePrice, `Perisa: ${selectedFlavor} | Campur: ${toppingText}`, chocoQuantity, true);
+            }
+
             closeChocojarModal();
         }
 
@@ -1092,7 +1173,7 @@
             msg += `💰 *JUMLAH KESELURUHAN: RM ${totalPrice.toFixed(2)}*\n\n`;
             msg += `Mohon proses pesanan saya ya! Terima kasih.`;
 
-            // Jika pesanan mengandungi Chocojar, hantar ke 01133512092
+            // Jika pesanan ada Chocojar, automatik hantar ke 01133512092
             const hasChocojar = cart.some(item => item.isChocojar);
             const phone = hasChocojar ? "601133512092" : "60197945644";
 
