@@ -679,40 +679,67 @@
     </section>
 
     <!-- ABOUT US -->
+    <!-- ABOUT US -->
     <section id="about">
         <div class="container">
             <div class="section-head">
                 <span class="eyebrow"><i class="fas fa-crown"></i> Cerita Kami</span>
-                <h2>Kisah Manis Di Sebalik <span class="grad">BIZKY</span></h2>
-                <p>Bagaimana sebuah balang Chocojar mengubah rutin harian warga TVET Mara Besut.</p>
+                <h2>Kisah Di Sebalik <span class="grad">BIZKY SHOP</span></h2>
+                <p>Gabungan rasa manis Chocojar, kepedasan Ramen berapi, dan kerangupan Chicken Chop warga TVET Mara Besut.</p>
             </div>
 
             <div class="about-wrap">
-                <div class="about-grid">
+                <!-- PENERANGAN BISNES -->
+                <div style="margin-bottom: 45px;">
                     <div class="about-text">
-                        <h3>Dari Balang Kecil, Menjadi Kegilaan Ramai!</h3>
-                        <p>Kisah BIZKY bermula dengan pencarian satu kepuasan: <em>dessert</em> coklat yang betul-betul pekat, tidak terlampau manis, dan chococruch mini kekal rangup berhari-hari.</p>
+                        <h3>Dari Minat, Menjadi Pilihan Utama TVET Mara Besut!</h3>
+                        <p>Kisah BIZKY bermula dengan misi menyajikan makanan berkualiti tinggi pada harga mesra pelajar daripada <em>dessert</em> Chocojar yang melimpah pekat, hidangan Ramen Buldak yang berapi, hinggalah Crispy Chicken Chop yang panas dan menyelerakan.</p>
                         
-                        <div class="chocojar-highlight-box">
-                            <h4><i class="fas fa-jar"></i> Fenomena Chocojar Mamylicious</h4>
-                            <p>Coklat premium (Chocolate &amp; White Chocolate) bersama 12 pilihan topping mewah seperti Kinder Bueno, Lotus Biscoff, Daim, Nutella dan lain-lain.</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 24px 0;">
+                            <div class="chocojar-highlight-box" style="margin: 0;">
+                                <h4><i class="fas fa-jar"></i> Chocojar Mamylicious</h4>
+                                <p>Coklat premium (Chocolate &amp; White Chocolate) bersama 12 pilihan topping mewah seperti Kinder Bueno, Lotus Biscoff, Daim dan KitKat.</p>
+                            </div>
+
+                            <div class="chocojar-highlight-box" style="margin: 0; border-left-color: #ff4500;">
+                                <h4><i class="fas fa-fire"></i> Hot Kitchen (Ramen &amp; Chicken Chop)</h4>
+                                <p>10 pilihan perisa Ramen Samyang pedas terangkat dan hidangan Chicken Chop crispy empuk bersama sos blackpepper pekat.</p>
+                            </div>
                         </div>
-
-                        <p>Kini, BIZKY berkembang di TVETMara Besut untuk hidangan chocojar mamylicious, ramen berapi, crispy chicken chop, serta servis cetak tugasan pantas.</p>
                     </div>
+                </div>
 
-                    <!-- KAD PROFIL SITI ANIS ALEYA -->
+                <!-- 2 KAD PENGURUS (OPERASI & KEWANGAN) -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px;">
+                    
+                    <!-- KAD 1: SITI ANIS ALEYA (OPERASI & CHOCOJAR) -->
                     <div class="founder-card">
                         <div class="founder-img-wrap">
                             <img src="anis.jpg" alt="Siti Anis Aleya - Pengurus Operasi BIZKY">
                         </div>
                         <span class="founder-badge">PENGURUS OPERASI</span>
                         <h4 class="founder-name">SITI ANIS ALEYA</h4>
-                        <div class="founder-role">PENGURUS OPERASI</div>
+                        <div class="founder-role">PENGURUS OPERASI (CHOCOJAR)</div>
                         <p class="founder-quote">
-                            "Misi saya adalah memastikan setiap balang Chocojar ranggup bersama limpahan topping pilihan anda, dan pesanan dihantar sepantas kilat!"
+                            "Misi saya adalah memastikan setiap balang Chocojar rangup bersama limpahan topping pilihan anda, dan pesanan dihantar sepantas kilat!"
                         </p>
                     </div>
+
+                    <!-- KAD 2: ANDA (PENGURUS KEWANGAN, CHICKEN CHOP & RAMEN) -->
+                    <div class="founder-card">
+                        <div class="founder-img-wrap">
+                            <!-- Tukar 'profile-kewangan.jpg' kepada nama fail gambar anda -->
+                            <img src="cheqq.jpg" alt="Pengurus Kewangan BIZKY" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <span class="founder-badge" style="background: linear-gradient(135deg, #FF9900 0%, #FF5500 100%);">PENGURUS KEWANGAN</span>
+                        <!-- TUKAR [NAMA ANDA] DI SINI -->
+                        <h4 class="founder-name">WAN NUR ATHIRAH</h4>
+                        <div class="founder-role">PENGURUS KEWANGAN (CHICKEN CHOP &amp; RAMEN)</div>
+                        <p class="founder-quote">
+                            "Memastikan pengurusan kewangan telus dan teratur, sambil menyajikan Chicken Chop rangup dan Ramen pedas berapi yang memuaskan selera anda!"
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -748,6 +775,7 @@
                 </article>
 
                 <!-- RAMEN SAMYANG SLIDER -->
+                <!-- RAMEN SAMYANG SLIDER -->
                 <article class="card card-slider glass">
                     <span class="card-tag">Pedas Berapi</span>
                     <div class="card-media">
@@ -759,8 +787,9 @@
                     <p class="desc">10 pilihan perisa berapi kegemaran anda</p>
                     <div class="price">RM 6.00</div>
                     <div class="card-actions">
-                        <button type="button" class="btn btn-primary btn-block" onclick="addCurrentRamenToCart()">
-                            <i class="fas fa-cart-plus"></i> Tambah Ke Troli
+                        <!-- TEKAN INI AKAN BUKA POPUP -->
+                        <button type="button" class="btn btn-primary btn-block" onclick="openRamenModal()">
+                            <i class="fas fa-cart-shopping"></i> Tambah Ke Troli
                         </button>
                     </div>
                     <div class="slider-dots" id="ramenDots"></div>
@@ -891,16 +920,56 @@
     </section>
 
     <!-- FEEDBACK & TESTIMONI -->
+<!-- FEEDBACK & TESTIMONI -->
     <section id="feedback">
         <div class="container">
             
-            <!-- BAHAGIAN 4 GAMBAR FEEDBACK CHOCOJAR -->
-            <div class="feedback-showcase-wrap">
-                <div class="section-head" style="margin-bottom:34px;">
-                    <span class="eyebrow"><i class="fas fa-heart" style="color:var(--gold);"></i> Review Pelanggan</span>
-                    <h2>Testimoni <span class="grad">Chocojar Mamylicious</span></h2>
-                    <p>Antara maklum balas &amp; kepuasan rasa daripada pembeli setia kami.</p>
+            <div class="section-head" style="margin-bottom:40px;">
+                <span class="eyebrow"><i class="fas fa-heart" style="color:var(--gold);"></i> Review Pelanggan</span>
+                <h2>Testimoni <span class="grad">Makanan Kami</span></h2>
+                <p>Kepuasan pelanggan menikmati Chocojar, Ramen Buldak &amp; Crispy Chicken Chop di TVET Mara Besut.</p>
+            </div>
+
+            <!-- TESTIMONI RAMEN & CHICKEN CHOP (BAHARU) -->
+            <div class="feedback-showcase-wrap" style="margin-bottom: 50px;">
+                <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-fire" style="color: #ff4500;"></i> Maklum Balas Ramen &amp; Chicken Chop
+                </h3>
+
+                <div class="feedback-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+                    
+                    <!-- 1. FEEDBACK RAMEN 1 -->
+                    <div class="feedback-img-card glass">
+                        <img src="feedbackramen1.jpg" alt="Feedback Ramen Samyang" style="height: 440px; object-fit: cover;" loading="lazy">
+                        <div class="feedback-card-overlay">
+                            <span>⭐⭐⭐⭐⭐ Murah &amp; Senang Berurusan!</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. FEEDBACK CHICKEN CHOP -->
+                    <div class="feedback-img-card glass">
+                        <img src="feedback chickenchop.jpg" alt="Feedback Chicken Chop Crispy" style="height: 440px; object-fit: cover;" loading="lazy">
+                        <div class="feedback-card-overlay">
+                            <span>⭐⭐⭐⭐⭐ Sedap &amp; Sangat Murah!</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. FEEDBACK RAMEN 2 -->
+                    <div class="feedback-img-card glass">
+                        <img src="feedbackramen2.jpg" alt="Feedback Ramen Sedap" style="height: 440px; object-fit: cover;" loading="lazy">
+                        <div class="feedback-card-overlay">
+                            <span>⭐⭐⭐⭐⭐ Sedap, Tak Pedas Sangat &amp; Mantap!</span>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
+
+            <!-- TESTIMONI CHOCOJAR MAMYLICIOUS -->
+            <div class="feedback-showcase-wrap" style="margin-bottom: 60px;">
+                <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-jar" style="color: var(--gold);"></i> Maklum Balas Chocojar Mamylicious
+                </h3>
 
                 <div class="feedback-gallery-grid">
                     <div class="feedback-img-card glass">
@@ -930,7 +999,7 @@
                 </div>
             </div>
 
-            <!-- BORANG FEEDBACK UMUM -->
+            <!-- BORANG FEEDBACK PELANGGAN -->
             <div class="feedback-wrap">
                 <div class="feedback-copy">
                     <span class="eyebrow"><i class="fas fa-comment-dots"></i> Suara Anda</span>
@@ -941,11 +1010,11 @@
                 <div class="form-card glass">
                     <div class="field">
                         <label for="fbNama">Nama Anda</label>
-                        <input type="text" id="fbNama" placeholder="Nama anda / Samaran">
+                        <input type="text" id="fbNama" placeholder="Nama anda / Samaran / No Bilik">
                     </div>
                     <div class="field">
                         <label for="fbMesej">Komen / Maklum Balas</label>
-                        <textarea id="fbMesej" rows="4" placeholder="Ceritakan pengalaman anda..."></textarea>
+                        <textarea id="fbMesej" rows="4" placeholder="Ceritakan pengalaman anda makan Chocojar / Ramen / Chicken Chop..."></textarea>
                     </div>
                     <button type="button" id="fbBtn" class="btn btn-primary btn-block">
                         <i class="fas fa-paper-plane"></i> Hantar Maklum Balas
@@ -965,7 +1034,7 @@
                         <img src="logo.jpeg" alt="BIZKY Shop Logo" class="footer-logo">
                         <h3>BIZKY SHOP</h3>
                     </div>
-                    <p>Pilihan utama warga TVET Mara Besut untuk hidangan Chocojar melimpah, crispy chicken chop, aneka ramen pedas, serta servis cetak tugasan pantas.</p>
+                    <p>Pilihan utama warga TVET Mara Besut untuk hidangan Chocojar melimpah, Crispy Chicken Chop, aneka Ramen pedas, serta servis cetak tugasan pantas.</p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/share/14oFTY2jjny/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/bizky_shop?utm_source=qr&stkn=eXAxZ3kxeG11YzZ2" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -978,7 +1047,7 @@
                     <ul class="contact-list">
                         <li><i class="fas fa-map-marker-alt"></i> TVET Mara Besut, Terengganu</li>
                         <li><i class="fas fa-phone"></i> 011-3351 2092 (Chocojar Order)</li>
-                        <li><i class="fas fa-phone"></i> 019-794 5644 (Makanan Lain)</li>
+                        <li><i class="fas fa-phone"></i> 019-794 5644 (Chicken Chop &amp; Ramen)</li>
                         <li><i class="fas fa-print"></i> 011-5708 9433 (Printing &amp; Binding)</li>
                         <li><i class="fas fa-envelope"></i> byhaq66@gmail.com</li>
                     </ul>
@@ -1105,6 +1174,44 @@
     </div>
 
     <script type="module" src="app.js"></script>
+
+    <!-- ============ MODAL PILIH PERISA RAMEN ============ -->
+    <div class="modal-overlay" id="ramenModal">
+        <div class="modal-box">
+            <button type="button" class="modal-close" onclick="closeRamenModal()"><i class="fas fa-times"></i></button>
+            <h3>Pilih Perisa Ramen Buldak</h3>
+            <p class="sub">Harga: RM 6.00 / paket. Pilih perisa dan kuantiti kegemaran anda!</p>
+
+            <!-- 1. Pilihan Perisa -->
+            <div class="opt-title"><i class="fas fa-fire"></i> 1. Pilih Perisa Ramen</div>
+            <div class="toppings-grid" id="ramenFlavorList" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); margin-bottom: 22px;">
+                <div class="topping-item selected" onclick="selectRamenFlavor(this, 'Original Hot (Hitam)')">🔥 Original Hot</div>
+                <div class="topping-item" onclick="selectRamenFlavor(this, '2X Spicy (Merah)')">🌶️ 2X Spicy</div>
+                <div class="topping-item" onclick="selectRamenFlavor(this, 'Carbonara (Pink)')">💖 Carbonara</div>
+                <div class="topping-item" onclick="selectRamenFlavor(this, 'Cream Carbonara')">🌸 Cream Carbonara</div>
+                <div class="topping-item" onclick="selectRamenFlavor(this, 'Cheese (Kuning)')">🧀 Cheese</div>
+                <div class="topping-item" onclick="selectRamenFlavor(this, 'Quattro Cheese')">🧀 Quattro Cheese</div>
+                <div class="topping-item" onclick="selectRamenFlavor(this, 'Jjajang (Hijau)')">🥢 Jjajang</div>
+                <div class="topping-item" onclick="selectRamenFlavor(this, 'Stew Type')">🍲 Stew Type</div>
+                <div class="topping-item" onclick="selectRamenFlavor(this, 'Rosé')">🌹 Rosé</div>
+            </div>
+
+            <!-- 2. Kuantiti -->
+            <div class="qty-row">
+                <span style="font-weight:800; font-size:1rem;">Kuantiti (Paket):</span>
+                <div class="qty-controls">
+                    <button type="button" class="qty-btn" onclick="changeRamenQty(-1)"><i class="fas fa-minus"></i></button>
+                    <span class="qty-val" id="ramenModalQty">1</span>
+                    <button type="button" class="qty-btn" onclick="changeRamenQty(1)"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <!-- Butang Masuk Ke Troli -->
+            <button type="button" class="btn btn-primary btn-block" onclick="confirmRamenToCart()">
+                <span id="ramenModalBtnText"><i class="fas fa-cart-plus"></i> Masukkan Ke Troli (RM 6.00)</span>
+            </button>
+        </div>
+    </div>
 
     <!-- LOGIK JAVASCRIPT LENGKAP -->
     <script>
@@ -1275,6 +1382,46 @@
             }
 
             closeChocojarModal();
+        }
+
+        /* ===== LOGIK POPUP MODAL RAMEN ===== */
+        let selectedRamenFlavor = "Original Hot (Hitam)";
+        let ramenQty = 1;
+        const ramenUnitPrice = 6.00;
+
+        function openRamenModal() {
+            document.getElementById('ramenModal').classList.add('open');
+            ramenQty = 1;
+            document.getElementById('ramenModalQty').innerText = '1';
+            updateRamenPrice();
+        }
+
+        function closeRamenModal() {
+            document.getElementById('ramenModal').classList.remove('open');
+        }
+
+        function selectRamenFlavor(el, flavor) {
+            document.querySelectorAll('#ramenFlavorList .topping-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            el.classList.add('selected');
+            selectedRamenFlavor = flavor;
+        }
+
+        function changeRamenQty(delta) {
+            ramenQty = Math.max(1, ramenQty + delta);
+            document.getElementById('ramenModalQty').innerText = ramenQty;
+            updateRamenPrice();
+        }
+
+        function updateRamenPrice() {
+            const total = ramenUnitPrice * ramenQty;
+            document.getElementById('ramenModalBtnText').innerHTML = `<i class="fas fa-cart-plus"></i> Masukkan Ke Troli (RM ${total.toFixed(2)})`;
+        }
+
+        function confirmRamenToCart() {
+            addToCart(`Ramen Buldak (${selectedRamenFlavor})`, ramenUnitPrice, `Perisa: ${selectedRamenFlavor}`, ramenQty);
+            closeRamenModal();
         }
 
         /* ===== TOAST NOTIFIKASI ===== */
