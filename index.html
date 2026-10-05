@@ -661,6 +661,7 @@
 
                 <ul class="hero-stats">
                     <li><b>Chocojar</b><span>12 Topping Viral</span></li>
+                    <li><b>Ramen</b><span>9 Perisa Viral</span></li>
                     <li><b>RM 6</b><span>Harga Bermula</span></li>
                     <li><b>100%</b><span>Puas Hati</span></li>
                 </ul>
@@ -703,7 +704,7 @@
 
                             <div class="chocojar-highlight-box" style="margin: 0; border-left-color: #ff4500;">
                                 <h4><i class="fas fa-fire"></i> Hot Kitchen (Ramen &amp; Chicken Chop)</h4>
-                                <p>10 pilihan perisa Ramen Samyang pedas terangkat dan hidangan Chicken Chop crispy empuk bersama sos blackpepper pekat.</p>
+                                <p>9 pilihan perisa Ramen Samyang pedas terangkat dan hidangan Chicken Chop crispy empuk bersama sos blackpepper pekat.</p>
                             </div>
                         </div>
                     </div>
@@ -784,7 +785,7 @@
                         <button type="button" class="slider-btn next" onclick="nextRamen()">&#10095;</button>
                     </div>
                     <h3 id="ramenTitle">Ramen Samyang</h3>
-                    <p class="desc">10 pilihan perisa berapi kegemaran anda</p>
+                    <p class="desc">9 pilihan perisa berapi kegemaran anda</p>
                     <div class="price">RM 6.00</div>
                     <div class="card-actions">
                         <!-- TEKAN INI AKAN BUKA POPUP -->
@@ -1554,6 +1555,39 @@
         window.addEventListener('scroll', () => {
             document.getElementById('navWrap').classList.toggle('scrolled', window.scrollY > 20);
         });
+
+      /* ===== HANTAR FEEDBACK (EMOJI 100% SUPPORT IPHONE & ANDROID) ===== */
+        const fbBtn = document.getElementById('fbBtn');
+        if (fbBtn) {
+            fbBtn.addEventListener('click', function() {
+                const nama = document.getElementById('fbNama').value.trim();
+                const mesej = document.getElementById('fbMesej').value.trim();
+
+                if (!nama || !mesej) {
+                    alert("Sila isi Nama dan Komen / Maklum Balas anda terlebih dahulu.");
+                    return;
+                }
+
+                // Nombor WhatsApp Bizky Shop
+                const noWhatsApp = "60197945644"; 
+
+                // Format kemas dengan emoji lengkap
+                let text = `🌟 *MAKLUM BALAS PELANGGAN BIZKY* 🌟\n`;
+                text += `━━━━━━━━━━━━━━━━━━\n\n`;
+                text += `👤 *Nama / No Bilik:*\n👉 ${nama}\n\n`;
+                text += `💬 *Komen / Pengalaman:*\n"${mesej}"\n\n`;
+                text += `━━━━━━━━━━━━━━━━━━\n`;
+                text += `❤️ _Terima kasih kerana menyokong BIZKY Shop (TVET Mara Besut)!_`;
+
+                // Guna api.whatsapp.com untuk sokongan emoji penuh di iPhone & Android
+                const waUrl = `https://api.whatsapp.com/send?phone=${noWhatsApp}&text=${encodeURIComponent(text)}`;
+                window.open(waUrl, '_blank');
+
+                // Kosongkan semula borang
+                document.getElementById('fbNama').value = "";
+                document.getElementById('fbMesej').value = "";
+            });
+        }
     </script>
 </body>
 </html>
